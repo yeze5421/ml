@@ -33,7 +33,7 @@
     {
   "key": "pytorch_basic_100.json",
   "title": "pytorch_1",
-  "path": "banks/my_bank.json",
+  "path": "banks/pytorch_basic_100.json",
   "format": "xgb-basic-v1"
 }
 
