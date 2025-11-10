@@ -30,5 +30,12 @@
       "path": "banks/ml_basic_100.json",
       "format": "xgb-basic-v1"
     }
+    {
+  "key": "pytorch_basic_100.json",
+  "title": "pytorch_1",
+  "path": "banks/my_bank.json",
+  "format": "xgb-basic-v1"
+}
+
   ]
 }
