@@ -1,0 +1,1901 @@
+[
+  {
+    "id": "pt-001",
+    "type": "single",
+    "stem": "创建一个 3x3 零张量的正确方式？",
+    "options": [
+      "torch.zeros(3,3)",
+      "torch.empty_like(3,3)",
+      "torch.ones(0,0)",
+      "torch.tensor.zeros(3,3)"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "`torch.zeros(3,3)` 按形状创建全 0。",
+    "professor_commentary": "API 名字朴素，别加前缀花样。",
+    "topic": "tensor-create",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-002",
+    "type": "single",
+    "stem": "查看张量形状的属性是？",
+    "options": [
+      "tensor.size",
+      "tensor.shape",
+      "tensor.len",
+      "torch.shape(tensor)"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "`x.shape` 返回尺寸；`x.size()` 也可。",
+    "professor_commentary": "形状先行，bug减少一半。",
+    "topic": "tensor-basics",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-003",
+    "type": "single",
+    "stem": "默认 dtype 若未指定通常为？（PyTorch 1.10+）",
+    "options": [
+      "torch.float64",
+      "torch.float32",
+      "torch.int64",
+      "torch.bfloat16"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "默认浮点是 float32；整型如索引多为 int64。",
+    "professor_commentary": "别和 numpy 的默认混。",
+    "topic": "dtype",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-004",
+    "type": "single",
+    "stem": "将 numpy 数组转为张量且共享内存的方法？",
+    "options": [
+      "torch.tensor(np_array)",
+      "torch.from_numpy(np_array)",
+      "torch.as_tensor(np_array.copy())",
+      "torch.clone(np_array)"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "`from_numpy` 与原数组共享底层内存。",
+    "professor_commentary": "共享内存要谨慎，改一处动两处。",
+    "topic": "numpy-bridge",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-005",
+    "type": "single",
+    "stem": "`x.requires_grad_(True)` 开启的功能是？",
+    "options": [
+      "自动求导跟踪",
+      "数据并行",
+      "混合精度",
+      "惰性计算"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "开启后参与图构建与梯度回传。",
+    "professor_commentary": "该求导就开，不该开就关。",
+    "topic": "autograd",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-006",
+    "type": "single",
+    "stem": "反向传播常用入口？",
+    "options": [
+      "loss.backward()",
+      "optimizer.step()",
+      "model.backward()",
+      "torch.backward(loss)"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "先 backward 再 step。",
+    "professor_commentary": "先算账，再记账。",
+    "topic": "autograd",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-007",
+    "type": "single",
+    "stem": "在 `torch.no_grad()` 块中进行的操作不会？",
+    "options": [
+      "改变数值",
+      "构建计算图",
+      "更新参数",
+      "影响 dtype"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "禁用求导以节省显存/算力。",
+    "professor_commentary": "推理与评估记得关图。",
+    "topic": "no-grad",
+    "difficulty": "easy"
+  },
+  {
+    "id": "pt-008",
+    "type": "single",
+    "stem": "把模型切换到评估模式用？",
+    "options": [
+      "model.train()",
+      "model.eval()",
+      "torch.eval(model)",
+      "with torch.no_grad()"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "`eval()` 影响 BN/Dropout 等状态。",
+    "professor_commentary": "别把 `no_grad` 当 `eval` 的替代。",
+    "topic": "mode",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-009",
+    "type": "single",
+    "stem": "正确的优化器更新顺序？",
+    "options": [
+      "zero_grad→backward→step",
+      "backward→zero_grad→step",
+      "step→backward→zero_grad",
+      "zero_grad→step→backward"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "典型顺序：`optimizer.zero_grad(); loss.backward(); optimizer.step()`。",
+    "professor_commentary": "顺序错了，梯度不是你想要的。",
+    "topic": "optim",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-010",
+    "type": "single",
+    "stem": "`DataLoader` 中 `shuffle=True` 的作用？",
+    "options": [
+      "打乱 batch 内顺序",
+      "每个 epoch 重采样",
+      "打乱样本顺序",
+      "打乱张量维度"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "分类任务常用；时间序列慎用。",
+    "professor_commentary": "别把时间打乱成麻花。",
+    "topic": "data",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-011",
+    "type": "single",
+    "stem": "`Dataset` 用户自定义至少要实现？",
+    "options": [
+      "__len__ 和 __getitem__",
+      "__iter__",
+      "__next__",
+      "__call__"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "长度与索引访问是最小接口。",
+    "professor_commentary": "先把‘两件套’缝好。",
+    "topic": "dataset",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-012",
+    "type": "single",
+    "stem": "把张量移动到 GPU？",
+    "options": [
+      "x.to('cuda')",
+      "torch.cuda(x)",
+      "x.cuda_device()",
+      "torch.move(x,'cuda')"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "`x.to(device)` 最通用。",
+    "professor_commentary": "设备是“地址”，别搬错家。",
+    "topic": "device",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-013",
+    "type": "single",
+    "stem": "查看可用 GPU 数量？",
+    "options": [
+      "torch.cuda.available_devices()",
+      "torch.cuda.device_count()",
+      "torch.cuda.num()",
+      "len(torch.cuda)"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "返回整数 GPU 数。",
+    "professor_commentary": "硬件先摸底，再分工。",
+    "topic": "cuda",
+    "difficulty": "easy"
+  },
+  {
+    "id": "pt-014",
+    "type": "single",
+    "stem": "冻结部分层的常见写法？",
+    "options": [
+      "param.grad=False",
+      "param.requires_grad=False",
+      "optimizer.freeze(param)",
+      "model.freeze()"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "关闭求导即可避免更新。",
+    "professor_commentary": "参数要会‘冬眠’。",
+    "topic": "finetune",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-015",
+    "type": "single",
+    "stem": "`nn.Module` 的前向逻辑写在？",
+    "options": [
+      "__call__",
+      "forward",
+      "__init__",
+      "step"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "`__call__` 会封装前后钩子并转到 `forward`。",
+    "professor_commentary": "魔法方法帮你接好管道。",
+    "topic": "module",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-016",
+    "type": "single",
+    "stem": "累计 loss 的标量值应该使用？",
+    "options": [
+      "loss.item()",
+      "float(loss) 任何时刻",
+      "loss.detach().numpy() on GPU",
+      "直接把 loss 累加"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "用 `item()` 取 Python 标量，避免存图。",
+    "professor_commentary": "别把整棵树塞进日志里。",
+    "topic": "logging",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-017",
+    "type": "single",
+    "stem": "`nn.CrossEntropyLoss` 期望的 `target` 形状/语义？",
+    "options": [
+      "与输出同 shape 的概率",
+      "one-hot",
+      "类别索引（LongTensor）",
+      "float32 标签"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "输入 logits [N,C,…]，target 为 Long 索引。",
+    "professor_commentary": "别给它 one-hot。",
+    "topic": "loss",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-018",
+    "type": "single",
+    "stem": "`CrossEntropyLoss` 是否需要对输入做 softmax？",
+    "options": [
+      "要",
+      "不要，内部集成了 log-softmax",
+      "只在多标签时要",
+      "训练后要"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "它直接吃 logits 更稳定。",
+    "professor_commentary": "省一步，少失准。",
+    "topic": "loss",
+    "difficulty": "easy"
+  },
+  {
+    "id": "pt-019",
+    "type": "single",
+    "stem": "`nn.Linear(4,3)` 的权重形状是？",
+    "options": [
+      "[4,3]",
+      "[3,4]",
+      "[3]",
+      "[4]"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "仿射：y = x @ W^T + b；W 形状 [out,in]。",
+    "professor_commentary": "形状别反了。",
+    "topic": "layers",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-020",
+    "type": "single",
+    "stem": "常见初始化获取方式？",
+    "options": [
+      "torch.nn.init",
+      "torch.init",
+      "torch.initialize",
+      "nn.initialize"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "如 `nn.init.kaiming_uniform_`。",
+    "professor_commentary": "初始化是起跑姿势。",
+    "topic": "init",
+    "difficulty": "easy"
+  },
+  {
+    "id": "pt-021",
+    "type": "single",
+    "stem": "开启混合精度训练的典型模块？",
+    "options": [
+      "torch.autocast / GradScaler",
+      "torch.amp.mixed",
+      "torch.cuda.float16()",
+      "torch.amp()"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "AMP：`autocast` 控算子，`GradScaler` 抗溢出。",
+    "professor_commentary": "速度与稳定都要。",
+    "topic": "amp",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-022",
+    "type": "single",
+    "stem": "保存/加载模型参数建议用？",
+    "options": [
+      "torch.save(model)",
+      "torch.save(model.state_dict()) / load_state_dict",
+      "pickle.dump",
+      "model.export()"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "state_dict 跨环境更稳。",
+    "professor_commentary": "版本迁移少踩坑。",
+    "topic": "ckpt",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-023",
+    "type": "single",
+    "stem": "`torch.manual_seed(42)` 的作用？",
+    "options": [
+      "固定 CPU 随机性",
+      "固定 GPU 完全确定性",
+      "同时固定 cudnn 确定性",
+      "与任何模块无关"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "还需设置 cuDNN 相关项才更确定。",
+    "professor_commentary": "可复现要多颗钉子。",
+    "topic": "seed",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-024",
+    "type": "single",
+    "stem": "将 BN/Dropout 生效与否由哪个方法控制？",
+    "options": [
+      "optimizer.step()",
+      "model.eval()/train()",
+      "torch.no_grad()",
+      "scheduler.step()"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "训练/评估模式切换。",
+    "professor_commentary": "别在测试时还随机丢。",
+    "topic": "mode",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-025",
+    "type": "single",
+    "stem": "学习率调度器调用时机常见是？",
+    "options": [
+      "每个 batch 后",
+      "每个 epoch 或按策略",
+      "在 backward 前",
+      "只在测试集上"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "看策略：StepLR/CosineAnnealing 等。",
+    "professor_commentary": "步伐要有节奏。",
+    "topic": "lr-sched",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-026",
+    "type": "single",
+    "stem": "梯度裁剪常用 API？",
+    "options": [
+      "torch.nn.utils.clip_grad_norm_",
+      "torch.clip_grad",
+      "optimizer.clip",
+      "loss.clip_"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "控制梯度爆炸。",
+    "professor_commentary": "别让梯度飙车。",
+    "topic": "stability",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-027",
+    "type": "single",
+    "stem": "`pin_memory=True` 的意义？",
+    "options": [
+      "固定权重不更新",
+      "加速 CPU→GPU 拷贝",
+      "减少显存",
+      "自动混合精度"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "页锁定内存有助异步拷贝。",
+    "professor_commentary": "I/O 也是性能瓶颈。",
+    "topic": "dataloader",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-028",
+    "type": "single",
+    "stem": "`num_workers` 的作用？",
+    "options": [
+      "多 GPU 数目",
+      "DataLoader 进程数",
+      "线程池大小",
+      "CUDA 流数量"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "增加数据加载并行度。",
+    "professor_commentary": "算得飞快也要喂得上。",
+    "topic": "dataloader",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-029",
+    "type": "single",
+    "stem": "`torchvision.transforms` 常用于？",
+    "options": [
+      "模型并行",
+      "图像增强/预处理",
+      "分布式通信",
+      "量化"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "Resize/Normalize/Compose 等。",
+    "professor_commentary": "数据变强，模型更稳。",
+    "topic": "vision",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-030",
+    "type": "single",
+    "stem": "把张量断开梯度图用？",
+    "options": [
+      "x.stop()",
+      "x.detach()",
+      "x.halt()",
+      "x.block()"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "detach 生成不带梯度的新张量视图。",
+    "professor_commentary": "必要时切断因果链。",
+    "topic": "autograd",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-031",
+    "type": "single",
+    "stem": "`with torch.autocast(device_type='cuda'):` 的默认 dtype 通常？",
+    "options": [
+      "float16/bfloat16 按硬件",
+      "float32",
+      "int8",
+      "float64"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "根据硬件能力选择半精度。",
+    "professor_commentary": "交给框架更省心。",
+    "topic": "amp",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-032",
+    "type": "single",
+    "stem": "`torch.no_grad()` 与 `torch.inference_mode()` 的差异？",
+    "options": [
+      "完全相同",
+      "后者更快更严格禁止视图上梯度元数据",
+      "前者更严格",
+      "与推理无关"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "inference_mode 额外省元数据。",
+    "professor_commentary": "推理要轻装简行。",
+    "topic": "inference",
+    "difficulty": "hard"
+  },
+  {
+    "id": "pt-033",
+    "type": "single",
+    "stem": "`model.parameters()` 返回？",
+    "options": [
+      "参数名列表",
+      "参数生成器（张量）",
+      "buffer 列表",
+      "优化器"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "可传给优化器。",
+    "professor_commentary": "别把 buffer 当参数。",
+    "topic": "module",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-034",
+    "type": "single",
+    "stem": "注册不参与优化但需要保存的状态用？",
+    "options": [
+      "self.register_parameter",
+      "self.register_buffer",
+      "state_dict.pop",
+      "nn.Buffer"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "如均值/方差、mask。",
+    "professor_commentary": "状态与参数分清楚。",
+    "topic": "module",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-035",
+    "type": "single",
+    "stem": "`zero_grad(set_to_none=True)` 的优点？",
+    "options": [
+      "更快更省显存",
+      "丢失梯度历史",
+      "无法再训练",
+      "使参数冻结"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "将 grad 置 None 可跳过清零内核。",
+    "professor_commentary": "小优化，真香。",
+    "topic": "optim",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-036",
+    "type": "single",
+    "stem": "正确的损失标量缩放以兼容 AMP？",
+    "options": [
+      "手动 *scale",
+      "GradScaler 自动缩放",
+      "必须自己实现溢出检测",
+      "不需要"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "使用 `scaler.scale(loss).backward()` 等。",
+    "professor_commentary": "让专家干专家的活。",
+    "topic": "amp",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-037",
+    "type": "single",
+    "stem": "`torch.save(obj, path)` 的序列化后端是？",
+    "options": [
+      "pickle",
+      "json",
+      "msgpack",
+      "capnp"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "因此不应加载不可信文件。",
+    "professor_commentary": "安全第一条：不信陌生包。",
+    "topic": "ckpt",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-038",
+    "type": "single",
+    "stem": "切换设备最安全的写法？",
+    "options": [
+      "model.cuda(); x.cuda()",
+      "to(device) 统一调用",
+      "torch.set_device",
+      "必须手写字符串"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "封装 device 变量更健壮。",
+    "professor_commentary": "写一次，处处跑。",
+    "topic": "device",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-039",
+    "type": "single",
+    "stem": "手写训练循环时常见遗漏？",
+    "options": [
+      "忘记 zero_grad",
+      "忘记 backward",
+      "忘记 step",
+      "以上都可能"
+    ],
+    "answer": [
+      3
+    ],
+    "explain": "三板斧缺一不可。",
+    "professor_commentary": "小 checklist 救大项目。",
+    "topic": "training-loop",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-040",
+    "type": "single",
+    "stem": "早停实现要监控？",
+    "options": [
+      "训练损失",
+      "验证指标",
+      "学习率",
+      "GPU 温度"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "防过拟合看验证集。",
+    "professor_commentary": "别盯着训练曲线自我感动。",
+    "topic": "early-stop",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-041",
+    "type": "single",
+    "stem": "`nn.Sequential` 的适用场景？",
+    "options": [
+      "简单按序堆层",
+      "复杂多分支结构",
+      "需要共享权重",
+      "需要自定义前向"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "复杂路网就别用直线高速。",
+    "professor_commentary": "能用就用，别强用。",
+    "topic": "module",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-042",
+    "type": "single",
+    "stem": "`view` 与 `reshape` 差异？",
+    "options": [
+      "完全相同",
+      "view 需内存连续，reshape 更通用",
+      "reshape 更慢",
+      "view 会复制"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "不连续时 `contiguous()` 再 view。",
+    "professor_commentary": "形状戏法背后是内存布局。",
+    "topic": "tensor-view",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-043",
+    "type": "single",
+    "stem": "`permute` 与 `transpose`？",
+    "options": [
+      "transpose 只能交换两维，permute 可重排多维",
+      "反之",
+      "都会复制数据",
+      "都改变存储顺序且复制"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "二者返回视图。",
+    "professor_commentary": "先想清轴，再动手。",
+    "topic": "tensor-view",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-044",
+    "type": "single",
+    "stem": "`requires_grad` 只作用于？",
+    "options": [
+      "leaf 张量",
+      "任何张量",
+      "buffer",
+      "参数名"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "非叶子也可设置，但优化器只更新叶子参数。",
+    "professor_commentary": "概念要分清。",
+    "topic": "autograd",
+    "difficulty": "hard"
+  },
+  {
+    "id": "pt-045",
+    "type": "single",
+    "stem": "`grad_fn` 存在说明？",
+    "options": [
+      "leaf 张量",
+      "由运算产生，参与计算图",
+      "不可求导",
+      "是 buffer"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "叶子参数 grad_fn 为 None。",
+    "professor_commentary": "谁造的它，图里记着。",
+    "topic": "autograd",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-046",
+    "type": "single",
+    "stem": "`torch.argmax(logits, dim=1)` 返回？",
+    "options": [
+      "最大值",
+      "最大值索引",
+      "平均值",
+      "softmax 概率"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "推理取类索引。",
+    "professor_commentary": "要概率请走 softmax。",
+    "topic": "ops",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-047",
+    "type": "single",
+    "stem": "`torch.cat([A,B], dim=1)` 意为？",
+    "options": [
+      "按列拼接",
+      "按行拼接",
+      "元素相乘",
+      "广播相加"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "dim=0 行拼接；dim=1 列拼接。",
+    "professor_commentary": "别把轴拧花。",
+    "topic": "ops",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-048",
+    "type": "single",
+    "stem": "广播规则核心？",
+    "options": [
+      "从尾维对齐，尺寸为1可扩展",
+      "必须完全相等",
+      "长边向短边扩展",
+      "需要复制数据"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "像穿袜子，从脚尖对齐。",
+    "professor_commentary": "广播是性能的朋友。",
+    "topic": "broadcast",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-049",
+    "type": "single",
+    "stem": "`nn.ReLU(inplace=True)` 的副作用？",
+    "options": [
+      "更慢",
+      "可能覆盖前向值影响反传/检查点",
+      "改变 dtype",
+      "改变形状"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "调试/检查点需谨慎使用就地。",
+    "professor_commentary": "省显存别走极端。",
+    "topic": "relu",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-050",
+    "type": "single",
+    "stem": "`torch.nn.functional`(F) 的定位？",
+    "options": [
+      "层的模块化封装",
+      "无状态函数式接口",
+      "优化器集合",
+      "数据集集合"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "F.relu/F.cross_entropy 等。",
+    "professor_commentary": "有无状态之分，别混。",
+    "topic": "functional",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-051",
+    "type": "single",
+    "stem": "多分类输出层常用？",
+    "options": [
+      "Linear + CrossEntropyLoss",
+      "Linear + Sigmoid + BCE",
+      "Conv + MSE",
+      "RNN + Hinge"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "CE 与 logits 是黄金搭档。",
+    "professor_commentary": "配方对，味道就对。",
+    "topic": "head",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-052",
+    "type": "single",
+    "stem": "多标签（二进制）任务的损失常用？",
+    "options": [
+      "CrossEntropyLoss",
+      "BCEWithLogitsLoss",
+      "MSELoss",
+      "CTCLoss"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "多标签用独立 sigmoid + BCE。",
+    "professor_commentary": "一对多别硬凑成多类。",
+    "topic": "loss",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-053",
+    "type": "single",
+    "stem": "梯度累积用于？",
+    "options": [
+      "小显存模拟大 batch",
+      "更快收敛",
+      "更好正则",
+      "更低延迟"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "多次 backward 再 step。",
+    "professor_commentary": "慢慢攒，量变到质变。",
+    "topic": "training-trick",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-054",
+    "type": "single",
+    "stem": "`torch.utils.checkpoint` 目的？",
+    "options": [
+      "更快 IO",
+      "换取计算换内存",
+      "自动混合精度",
+      "分布式通信"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "重算前向以省显存。",
+    "professor_commentary": "存算子，别存激活。",
+    "topic": "memory",
+    "difficulty": "hard"
+  },
+  {
+    "id": "pt-055",
+    "type": "single",
+    "stem": "`nn.Embedding` 的输入为？",
+    "options": [
+      "浮点向量",
+      "类别索引（Long）",
+      "one-hot",
+      "概率分布"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "查表取行。",
+    "professor_commentary": "别喂错料。",
+    "topic": "nlp",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-056",
+    "type": "single",
+    "stem": "`pack_padded_sequence` 用于？",
+    "options": [
+      "图像增广",
+      "可变长序列 RNN",
+      "多 GPU",
+      "混合精度"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "让 RNN 跳过 padding。",
+    "professor_commentary": "别让模型学会‘填充’。",
+    "topic": "rnn",
+    "difficulty": "hard"
+  },
+  {
+    "id": "pt-057",
+    "type": "single",
+    "stem": "`clip_grad_norm_` 的裁剪范数常用？",
+    "options": [
+      "L1",
+      "L2",
+      "L∞",
+      "Frobenius"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "论文里常见 L2。",
+    "professor_commentary": "稳定第一位。",
+    "topic": "stability",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-058",
+    "type": "single",
+    "stem": "`DistributedDataParallel(DDP)` 的优势？",
+    "options": [
+      "多机多卡同步训练",
+      "自动数据划分",
+      "自动保存ckpt",
+      "自动混合精度"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "需配合 `DistributedSampler`。",
+    "professor_commentary": "分布式像管弦乐，指挥要统一。",
+    "topic": "ddp",
+    "difficulty": "hard"
+  },
+  {
+    "id": "pt-059",
+    "type": "single",
+    "stem": "TorchScript 的用途？",
+    "options": [
+      "部署/优化前端",
+      "仅训练可用",
+      "替代 Python",
+      "只支持 CPU"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "`trace/script` 转 IR。",
+    "professor_commentary": "把模型变成可携带工件。",
+    "topic": "torchscript",
+    "difficulty": "hard"
+  },
+  {
+    "id": "pt-060",
+    "type": "single",
+    "stem": "`model.to(memory_format=torch.channels_last)` 主要提升？",
+    "options": [
+      "RNN 速度",
+      "卷积内存访问效率",
+      "显存上限",
+      "Dataloader 吞吐"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "NHWC（channels_last）对 GPU 卷积友好。",
+    "professor_commentary": "布局也有学问。",
+    "topic": "perf",
+    "difficulty": "hard"
+  },
+  {
+    "id": "pt-061",
+    "type": "multi",
+    "stem": "关于张量与 dtype，正确的是：",
+    "options": [
+      "float32 是默认浮点",
+      "int64 常用于索引",
+      "to(device,dtype=...) 可同时迁移与转型",
+      "bfloat16 与 float16 动态范围不同"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "类型不对，误差先行。",
+    "professor_commentary": "把数的“护照”贴对。",
+    "topic": "dtype",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-062",
+    "type": "multi",
+    "stem": "关于自动求导，正确的是：",
+    "options": [
+      "叶子参数通常 requires_grad=True",
+      "no_grad 不构图",
+      "inference_mode 进一步省元数据",
+      "backward 前需有标量损失或提供 grad"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "标量最方便；非标量需提供外部梯度。",
+    "professor_commentary": "图是账本，别乱记。",
+    "topic": "autograd",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-063",
+    "type": "multi",
+    "stem": "关于数据加载，正确的是：",
+    "options": [
+      "Dataset 提供样本",
+      "Sampler 控制采样顺序",
+      "DataLoader 负责批和并行",
+      "pin_memory 有助加速 H2D"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "三角组合各司其职。",
+    "professor_commentary": "上菜要有分工。",
+    "topic": "dataloader",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-064",
+    "type": "multi",
+    "stem": "训练循环基本步骤：",
+    "options": [
+      "前向计算",
+      "计算损失",
+      "反向传播",
+      "优化器步进"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "四件套背下来。",
+    "professor_commentary": "顺序不要颠。",
+    "topic": "training-loop",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-065",
+    "type": "multi",
+    "stem": "选择合适损失函数：",
+    "options": [
+      "回归→MSE/L1",
+      "多分类→CE",
+      "多标签→BCEWithLogits",
+      "序列对齐→CTCLoss"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "场景对，指标对。",
+    "professor_commentary": "选错损失=南辕北辙。",
+    "topic": "loss",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-066",
+    "type": "multi",
+    "stem": "优化器常见：",
+    "options": [
+      "SGD/动量",
+      "Adam/AdamW",
+      "RMSprop",
+      "Adagrad"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "入门先会 SGD/AdamW。",
+    "professor_commentary": "没有银弹，只看任务。",
+    "topic": "optim",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-067",
+    "type": "multi",
+    "stem": "学习率调度策略：",
+    "options": [
+      "Step/多步衰减",
+      "余弦退火",
+      "Warmup 结合",
+      "ReduceLROnPlateau"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "节奏对了，收敛才悦耳。",
+    "professor_commentary": "别一直大步流星。",
+    "topic": "lr-sched",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-068",
+    "type": "multi",
+    "stem": "正则化与稳定：",
+    "options": [
+      "权重衰减（L2）",
+      "Dropout",
+      "数据增强",
+      "梯度裁剪"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "手段很多，别只会一招。",
+    "professor_commentary": "稳中求进。",
+    "topic": "regularize",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-069",
+    "type": "multi",
+    "stem": "评估与模式切换：",
+    "options": [
+      "训练前/后切换 train/eval",
+      "评估期用 no_grad 或 inference_mode",
+      "保存最优验证指标的 ckpt",
+      "测试集只用一次"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "科学评估要自律。",
+    "professor_commentary": "别把测试当调参。",
+    "topic": "evaluation",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-070",
+    "type": "multi",
+    "stem": "内存/性能优化：",
+    "options": [
+      "channels_last 对卷积友好",
+      "AMP 可提速",
+      "检查点技术省显存",
+      "逐 batch 同步打印可能拖慢训练"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "性能是系统性的。",
+    "professor_commentary": "瓶颈往往不在算子。",
+    "topic": "perf",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-071",
+    "type": "multi",
+    "stem": "张量视图与拷贝：",
+    "options": [
+      "view/reshape 可能共享存储",
+      "permute/transpose 返回视图",
+      "contiguous 可整理内存",
+      "clone 会复制数据"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "读写代价不同，心里要有数。",
+    "professor_commentary": "复制不是免费的午餐。",
+    "topic": "tensor-view",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-072",
+    "type": "multi",
+    "stem": "多 GPU 训练常见组件：",
+    "options": [
+      "DistributedSampler",
+      "DistributedDataParallel(DDP)",
+      "torchrun/torch.distributed.launch",
+      "NCCL/Gloo 后端"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "单机多卡优先 NCCL（NVIDIA）。",
+    "professor_commentary": "别把乐团指挥成自由爵士。",
+    "topic": "ddp",
+    "difficulty": "hard"
+  },
+  {
+    "id": "pt-073",
+    "type": "multi",
+    "stem": "保存/加载注意：",
+    "options": [
+      "保存 state_dict",
+      "同时保存优化器状态",
+      "记录超参/随机种子",
+      "跨版本可能需 map_location"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "备份的不只是权重。",
+    "professor_commentary": "复现离不开元数据。",
+    "topic": "ckpt",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-074",
+    "type": "multi",
+    "stem": "可复现实践：",
+    "options": [
+      "固定随机种子",
+      "设置 cudnn.deterministic/benchmark",
+      "记录环境版本",
+      "控制数据打乱"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "可复现先于调参。",
+    "professor_commentary": "科学的底线。",
+    "topic": "repro",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-075",
+    "type": "multi",
+    "stem": "常见坑：",
+    "options": [
+      "CrossEntropy 用 one-hot 作为 target",
+      "训练时忘记 model.train()",
+      "评估忘记 eval()+no_grad()",
+      "loss.backwards() 拼写错"
+    ],
+    "answer": [
+      1,
+      2,
+      3
+    ],
+    "explain": "第一项是反例，另外几项是真坑。",
+    "professor_commentary": "把坑贴到显示器上。",
+    "topic": "pitfalls",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-076",
+    "type": "multi",
+    "stem": "NLP 典型组件：",
+    "options": [
+      "Embedding",
+      "RNN/LSTM/GRU",
+      "Transformer 编码器",
+      "CTCLoss"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "CTC 多用于语音/对齐。",
+    "professor_commentary": "分工明确，别乱用。",
+    "topic": "nlp",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-077",
+    "type": "multi",
+    "stem": "CV 典型组件：",
+    "options": [
+      "Conv/BN/ReLU",
+      "池化与上采样",
+      "数据增强（Flip/ColorJitter）",
+      "CTCLoss"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "CTC 不常见于图像分类。",
+    "professor_commentary": "架构是乐高。",
+    "topic": "vision",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-078",
+    "type": "multi",
+    "stem": "调试/监控：",
+    "options": [
+      "print/汇总日志",
+      "TensorBoard/Weights&Biases",
+      "gradient/parameter norm 监控",
+      "只看训练损失即可"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "最后一项是反例。",
+    "professor_commentary": "看不见就改不对。",
+    "topic": "monitor",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-079",
+    "type": "multi",
+    "stem": "BCEWithLogits 的数值稳定性来自：",
+    "options": [
+      "把 sigmoid 融入损失",
+      "使用 log-sum-exp",
+      "自动梯度裁剪",
+      "AMP"
+    ],
+    "answer": [
+      0,
+      1
+    ],
+    "explain": "融合避免极端区间的溢出。",
+    "professor_commentary": "细节换稳健。",
+    "topic": "loss",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-080",
+    "type": "multi",
+    "stem": "数据预处理良好实践：",
+    "options": [
+      "标准化/归一化",
+      "按通道均值方差",
+      "训练/验证使用相同统计口径",
+      "在测试集上拟合归一化"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "最后一项是泄漏。",
+    "professor_commentary": "口径不一，评估作废。",
+    "topic": "preprocess",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-081",
+    "type": "multi",
+    "stem": "小显存生存法则：",
+    "options": [
+      "梯度累积",
+      "更小分辨率/序列长",
+      "混合精度",
+      "检查点"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "四招组合拳。",
+    "professor_commentary": "别和显存硬刚。",
+    "topic": "memory",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-082",
+    "type": "multi",
+    "stem": "准确使用 CrossEntropy：",
+    "options": [
+      "输入 logits",
+      "target 为 Long 索引",
+      "label smoothing 可选",
+      "需要手动 softmax"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "最后一项是反例。",
+    "professor_commentary": "别多此一举。",
+    "topic": "loss",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-083",
+    "type": "multi",
+    "stem": "常见张量变换链：",
+    "options": [
+      "NCHW↔NHWC",
+      "permute 与 contiguous 配合",
+      "reshape/flatten",
+      "随机切换 dtype"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "最后一项不是普通需求。",
+    "professor_commentary": "轴与存储要统一。",
+    "topic": "tensor-trans",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-084",
+    "type": "multi",
+    "stem": "优化稳定性：",
+    "options": [
+      "合适初始化",
+      "梯度/参数范数监控",
+      "学习率 warmup",
+      "增加随机种子个数来“撞运气”"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "撞运气不是方法论。",
+    "professor_commentary": "可控才是专业。",
+    "topic": "stability",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-085",
+    "type": "multi",
+    "stem": "分布式训练易错点：",
+    "options": [
+      "忘记使用 DistributedSampler",
+      "各进程重复保存 ckpt 冲突",
+      "不设置 init_method 导致挂起",
+      "不同进程随机性不独立"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "工程问题往往比算法难。",
+    "professor_commentary": "流程>技巧。",
+    "topic": "ddp",
+    "difficulty": "hard"
+  },
+  {
+    "id": "pt-086",
+    "type": "multi",
+    "stem": "TorchScript/部署注意：",
+    "options": [
+      "避免 Python 控制流过于动态",
+      "Prefer Script/Trace 组合",
+      "自定义 op 需要注册",
+      "与 ONNX 可配合"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "先做纯张量化，再谈导出。",
+    "professor_commentary": "把“魔法”变成“工艺”。",
+    "topic": "deploy",
+    "difficulty": "hard"
+  },
+  {
+    "id": "pt-087",
+    "type": "multi",
+    "stem": "模型结构排查：",
+    "options": [
+      "`print(model)`/`named_modules()`",
+      "统计参数量",
+      "检查梯度是否为 None",
+      "只看最终准确率即可"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "最后一项是反例。",
+    "professor_commentary": "过程决定结果。",
+    "topic": "debug",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-088",
+    "type": "multi",
+    "stem": "图像常用增广：",
+    "options": [
+      "RandomResizedCrop",
+      "RandomHorizontalFlip",
+      "ColorJitter",
+      "AutoAugment/TrivialAugment"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "增强是正则化的一种。",
+    "professor_commentary": "别把猫染成老虎。",
+    "topic": "augment",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-089",
+    "type": "multi",
+    "stem": "RNN/Transformer 序列批处理：",
+    "options": [
+      "padding 到相同长度",
+      "mask 忽略 padding",
+      "pack/pad 工具",
+      "直接丢弃长序列"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "最后一项通常不可取。",
+    "professor_commentary": "对齐先行。",
+    "topic": "sequence",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-090",
+    "type": "multi",
+    "stem": "良好的实验管理：",
+    "options": [
+      "固定种子与版本记录",
+      "保存最好与最后的 ckpt",
+      "记录学习率与调度曲线",
+      "只保存最后一次结果"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "最后一项是反例。",
+    "professor_commentary": "可复现=生产力。",
+    "topic": "exp",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-091",
+    "type": "multi",
+    "stem": "性能剖析工具：",
+    "options": [
+      "torch.profiler",
+      "nvprof/nsys",
+      "torch.utils.benchmark",
+      "random.time"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "random.time 并不存在。",
+    "professor_commentary": "测得准，才改得对。",
+    "topic": "profile",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-092",
+    "type": "multi",
+    "stem": "图形/显存调试：",
+    "options": [
+      "torch.cuda.memory_summary()",
+      "set_printoptions/summary",
+      "检测 grad 是否为 None",
+      "把 batch 翻倍试试"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "最后一项可能直接 OOM。",
+    "professor_commentary": "先看，再动。",
+    "topic": "debug-mem",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-093",
+    "type": "multi",
+    "stem": "常见学习率设置：",
+    "options": [
+      "AdamW 较高起步可行",
+      "SGD 需更小且配合动量",
+      "Warmup 对 Transformer 友好",
+      "固定学习率一直不变"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "最后一项常不佳。",
+    "professor_commentary": "节奏是艺术。",
+    "topic": "lr",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-094",
+    "type": "multi",
+    "stem": "半精度注意事项：",
+    "options": [
+      "避免在 fp16 中做求和/softmax 的极值",
+      "使用 GradScaler",
+      "某些算子需保持 fp32",
+      "bfloat16 在 A100 等硬件更稳"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "混合精度不是“一键提速”，要看算子。",
+    "professor_commentary": "稳字当头。",
+    "topic": "amp",
+    "difficulty": "hard"
+  },
+  {
+    "id": "pt-095",
+    "type": "multi",
+    "stem": "常用度量指标：",
+    "options": [
+      "Accuracy/Top‑k",
+      "Precision/Recall/F1",
+      "ROC‑AUC/PR‑AUC",
+      "只看训练 Loss"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "最后一项是反例。",
+    "professor_commentary": "指标为王。",
+    "topic": "metrics",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-096",
+    "type": "multi",
+    "stem": "良好代码结构：",
+    "options": [
+      "模块化（model/optimizer/sched）",
+      "清晰的 config",
+      "可插拔 dataset/transforms",
+      "把数据写死在代码里"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "硬编码是技术债。",
+    "professor_commentary": "工程意识=战斗力。",
+    "topic": "engineering",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-097",
+    "type": "multi",
+    "stem": "小数据策略：",
+    "options": [
+      "强正则/数据增强",
+      "冻结大部分层做微调",
+      "交叉验证",
+      "盲目堆深度"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "最后一项是反例。",
+    "professor_commentary": "刀要快，也要小。",
+    "topic": "low-data",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-098",
+    "type": "multi",
+    "stem": "日志与可视化：",
+    "options": [
+      "TensorBoard scalar/histogram",
+      "学习率曲线",
+      "样例可视化",
+      "关闭所有日志最干净"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "最后一项不可取。",
+    "professor_commentary": "看见才心安。",
+    "topic": "logging",
+    "difficulty": "intro"
+  },
+  {
+    "id": "pt-099",
+    "type": "multi",
+    "stem": "推理阶段加速策略：",
+    "options": [
+      "eval()+no_grad()/inference_mode",
+      "channels_last",
+      "半精度推理（硬件允许）",
+      "随机打乱数据以防过拟合"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "最后一项与推理毫无关系。",
+    "professor_commentary": "快而稳。",
+    "topic": "inference",
+    "difficulty": "med"
+  },
+  {
+    "id": "pt-100",
+    "type": "multi",
+    "stem": "一套可靠的入门训练模板应包含：",
+    "options": [
+      "清晰的数据模块",
+      "标准化的训练循环",
+      "验证与早停/保存最佳",
+      "分布式/AMP 可开关"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "把样板打磨好，复用事半功倍。",
+    "professor_commentary": "模板即生产力。",
+    "topic": "template",
+    "difficulty": "intro"
+  }
+]
