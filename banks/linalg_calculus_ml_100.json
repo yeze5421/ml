@@ -1,0 +1,92 @@
+[
+  {
+    "id": "lc-001",
+    "type": "single",
+    "stem": "两个向量 x,y 的内积 x·y 等于？",
+    "options": [
+      "x^T y",
+      "x y^T",
+      "||x||·||y||",
+      "x∘y"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "内积是 x^T y（标量）。",
+    "professor_commentary": "内积是相似度的‘尺子’，从几何到统计都用它。",
+    "topic": "dot",
+    "difficulty": "intro"
+  },
+  {
+    "id": "lc-002",
+    "type": "single",
+    "stem": "余弦相似度 cosθ 可写为？",
+    "options": [
+      "(x^T y)/(||x|| ||y||)",
+      "x^T y",
+      "||x-y||",
+      "(x·y)/n"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "标准化后比较方向。",
+    "professor_commentary": "先比方向，再谈长度。",
+    "topic": "cosine",
+    "difficulty": "intro"
+  },
+  {
+    "id": "lc-003",
+    "type": "single",
+    "stem": "矩阵乘法 AB 的定义是？",
+    "options": [
+      "对应元素乘",
+      "按行×按列求和",
+      "按列×按列",
+      "Hadamard 乘"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "C_ij = Σ_k A_ik B_kj。",
+    "professor_commentary": "把线性变换接起来。",
+    "topic": "matmul",
+    "difficulty": "intro"
+  },
+  {
+    "id": "lc-004",
+    "type": "single",
+    "stem": "单位矩阵 I 的作用？",
+    "options": [
+      "改变方向",
+      "恒等变换",
+      "缩放",
+      "随机旋转"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "AI=IA=A。",
+    "professor_commentary": "它是线性世界的 1。",
+    "topic": "identity",
+    "difficulty": "intro"
+  },
+  {
+    "id": "lc-005",
+    "type": "single",
+    "stem": "列满秩的 n×d 矩阵 X (n≥d) 的秩为？",
+    "options": [
+      "< d",
+      "= d",
+      "= n",
+      "= 1"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "列向量线性无关。",
+    "professor_commentary": "满秩意味着信息不冗余。",
+    "topic": "rank",
+    "difficulty": "easy"
+  }
+]

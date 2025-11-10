@@ -1,0 +1,1893 @@
+[
+  {
+    "id": "py-001",
+    "type": "single",
+    "stem": "Python 文件扩展名通常为？",
+    "options": [
+      ".jav",
+      ".py",
+      ".pt",
+      ".p"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "Python 源文件以 .py 结尾。",
+    "professor_commentary": "基础不牢，地动山摇。",
+    "topic": "basics",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-002",
+    "type": "single",
+    "stem": "Python 默认的整数类型是？",
+    "options": [
+      "固定32位int",
+      "长整型long",
+      "任意精度int",
+      "short"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "Python int 自动扩容为任意精度。",
+    "professor_commentary": "别替解释器担心溢出，它自会长大。",
+    "topic": "types",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-003",
+    "type": "single",
+    "stem": "表达式 3/2 在 Python 3 的结果是？",
+    "options": [
+      "1",
+      "1.0",
+      "1.5",
+      "2"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "‘/’ 在 Py3 为真除法，返回 float。",
+    "professor_commentary": "数学课别带 Py2 的旧课本。",
+    "topic": "operators",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-004",
+    "type": "single",
+    "stem": "地板除运算符是？",
+    "options": [
+      "/",
+      "//",
+      "%",
+      "**"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "‘//’ 进行向下取整除法。",
+    "professor_commentary": "地板就是往下看。",
+    "topic": "operators",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-005",
+    "type": "single",
+    "stem": "求幂运算符是？",
+    "options": [
+      "^",
+      "**",
+      "pow",
+      "@@@"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "‘**’ 是幂；pow 也是函数实现。",
+    "professor_commentary": "语法糖与函数各擅胜场。",
+    "topic": "operators",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-006",
+    "type": "single",
+    "stem": "print(1,2,3,sep='-') 输出？",
+    "options": [
+      "1 2 3",
+      "1-2-3",
+      "1--2--3",
+      "123"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "sep 指定分隔符。",
+    "professor_commentary": "学会看签名，等于会用大半。",
+    "topic": "io",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-007",
+    "type": "single",
+    "stem": "字符串不可变，这意味着？",
+    "options": [
+      "可原地改字符",
+      "必须创建新字符串",
+      "能就地扩容",
+      "可以原位切片赋值"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "str 是不可变对象，修改会生成新对象。",
+    "professor_commentary": "不变性换来安全与共享。",
+    "topic": "str",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-008",
+    "type": "single",
+    "stem": "列表切片 a[::-1] 的作用？",
+    "options": [
+      "原地反转",
+      "返回反转副本",
+      "排序",
+      "去重"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "步长为 -1 产生反向切片副本。",
+    "professor_commentary": "副本与原地是两码事。",
+    "topic": "list",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-009",
+    "type": "single",
+    "stem": "下列哪一个是可变类型？",
+    "options": [
+      "tuple",
+      "str",
+      "list",
+      "frozenset"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "list 可变，其余选项不可变。",
+    "professor_commentary": "‘能改’与‘能哈希’常相伴相离。",
+    "topic": "types",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-010",
+    "type": "single",
+    "stem": "字典字面量使用的括号是？",
+    "options": [
+      "[]",
+      "()",
+      "{}",
+      "<>"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "dict 使用花括号，并以键:值对。",
+    "professor_commentary": "别把‘衣服口袋’和‘背包’穿反。",
+    "topic": "dict",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-011",
+    "type": "single",
+    "stem": "集合去重的核心特性是？",
+    "options": [
+      "保持顺序",
+      "允许重复",
+      "无序且元素唯一",
+      "键值映射"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "set 是无序不重复的元素集合。",
+    "professor_commentary": "去重从 set 开始。",
+    "topic": "set",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-012",
+    "type": "single",
+    "stem": "None 的布尔值是？",
+    "options": [
+      "True",
+      "False",
+      "1",
+      "不可用"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "None 在布尔上下文中为 False。",
+    "professor_commentary": "空即是空，别强行附会。",
+    "topic": "truthiness",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-013",
+    "type": "single",
+    "stem": "条件表达式语法是？",
+    "options": [
+      "if a then b else c",
+      "b if a else c",
+      "(a?b:c)",
+      "b when a else c"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "Python 使用 b if a else c。",
+    "professor_commentary": "读起来像英语句子即可。",
+    "topic": "control-flow",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-014",
+    "type": "single",
+    "stem": "for 循环迭代对象要求？",
+    "options": [
+      "必须是列表",
+      "必须是序列",
+      "实现迭代协议",
+      "必须是生成器"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "可迭代=实现 __iter__ 或迭代器协议。",
+    "professor_commentary": "会迭代，江湖处处通。",
+    "topic": "iteration",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-015",
+    "type": "single",
+    "stem": "range(3) 产生的序列是？",
+    "options": [
+      "1,2,3",
+      "0,1,2",
+      "1,2",
+      "0,1,2,3"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "半开区间：起点含，终点不含。",
+    "professor_commentary": "数学家都喜欢半开。",
+    "topic": "iteration",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-016",
+    "type": "single",
+    "stem": "函数定义关键字？",
+    "options": [
+      "func",
+      "def",
+      "function",
+      "lambda"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "def 用于命名函数。",
+    "professor_commentary": "名字很短，但分量不轻。",
+    "topic": "functions",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-017",
+    "type": "single",
+    "stem": "默认参数的大坑是？",
+    "options": [
+      "用 None",
+      "使用可变对象将被共享",
+      "不能有默认",
+      "顺序无关"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "可变默认值在多次调用间共享状态。",
+    "professor_commentary": "别把‘作业纸’当厕纸复用。",
+    "topic": "functions",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-018",
+    "type": "single",
+    "stem": "*args 的作用？",
+    "options": [
+      "收集关键字参数",
+      "收集位置参数",
+      "展开字典",
+      "展开集合"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "星号参数收集多余的位置实参为元组。",
+    "professor_commentary": "兜底的口袋。",
+    "topic": "functions",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-019",
+    "type": "single",
+    "stem": "**kwargs 的作用？",
+    "options": [
+      "收集位置参数",
+      "收集关键字参数",
+      "解包列表",
+      "强制关键字形参"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "双星号收集关键字实参为字典。",
+    "professor_commentary": "给散落的词一个索引。",
+    "topic": "functions",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-020",
+    "type": "single",
+    "stem": "函数注解（type hints）运行期默认怎样？",
+    "options": [
+      "强制检查",
+      "不生效，仅供工具/静态检查",
+      "报错",
+      "自动转换类型"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "类型注解不强制，靠工具检查。",
+    "professor_commentary": "约法三章，靠自觉。",
+    "topic": "typing",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-021",
+    "type": "single",
+    "stem": "with 语句需要对象实现？",
+    "options": [
+      "__iter__",
+      "__enter__/__exit__",
+      "__call__",
+      "__len__"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "上下文管理协议定义进入与退出。",
+    "professor_commentary": "先约好开门关门的礼节。",
+    "topic": "context",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-022",
+    "type": "single",
+    "stem": "打开文件最安全的方式是？",
+    "options": [
+      "open 后直接读写",
+      "with open(...) as f",
+      "只用 os.open",
+      "先读后开"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "with 自动关闭文件。",
+    "professor_commentary": "出门要记得关灯。",
+    "topic": "io",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-023",
+    "type": "single",
+    "stem": "异常的基类是？",
+    "options": [
+      "BaseError",
+      "Throwable",
+      "Exception",
+      "Error"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "常捕获 Exception 或其子类。",
+    "professor_commentary": "别一网打尽到 BaseException。",
+    "topic": "exceptions",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-024",
+    "type": "single",
+    "stem": "try/except/else/finally 中 finally 的作用？",
+    "options": [
+      "条件收尾",
+      "异常时执行",
+      "无论是否异常都执行",
+      "只在无异常执行"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "finally 用于清理收尾动作。",
+    "professor_commentary": "擦桌子不挑情绪。",
+    "topic": "exceptions",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-025",
+    "type": "single",
+    "stem": "列表推导式 [x*x for x in it] 的本质？",
+    "options": [
+      "语法糖生成列表",
+      "生成器表达式",
+      "集合生成式",
+      "字典推导"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "一次性构建列表对象。",
+    "professor_commentary": "糖吃多也要刷牙。",
+    "topic": "comprehension",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-026",
+    "type": "single",
+    "stem": "生成器使用哪个关键字产生值？",
+    "options": [
+      "yield",
+      "return",
+      "emit",
+      "next"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "yield 暂停并返回，下次继续。",
+    "professor_commentary": "‘断点续传’的艺术。",
+    "topic": "generators",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-027",
+    "type": "single",
+    "stem": "迭代器需要实现的方法？",
+    "options": [
+      "__iter__ 和 __next__",
+      "__len__",
+      "__call__",
+      "__getitem__"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "迭代器可迭代且能给下一个元素。",
+    "professor_commentary": "会走又会报站。",
+    "topic": "iteration",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-028",
+    "type": "single",
+    "stem": "sorted 与 list.sort 区别？",
+    "options": [
+      "都原地",
+      "sorted 返回新列表，sort 原地",
+      "都返回新列表",
+      "都不稳定"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "sorted 生成新列表；list.sort 就地。",
+    "professor_commentary": "复制与原地，别混。",
+    "topic": "algorithms",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-029",
+    "type": "single",
+    "stem": "字典按键遍历是？",
+    "options": [
+      "d.items()",
+      "d.keys() 默认迭代键",
+      "d.values()",
+      "d.get()"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "直接迭代 dict 等价于迭代键。",
+    "professor_commentary": "省事是 Pythonic。",
+    "topic": "dict",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-030",
+    "type": "single",
+    "stem": "in 成员测试对字典默认是？",
+    "options": [
+      "查值",
+      "查键",
+      "查项",
+      "查长度"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "in d 等价于键是否存在。",
+    "professor_commentary": "钥匙清单，而非物品清单。",
+    "topic": "dict",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-031",
+    "type": "single",
+    "stem": "PEP8 建议的缩进空格数？",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "8"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "PEP8 推荐 4 空格缩进。",
+    "professor_commentary": "代码像排版，先对齐再谈美。",
+    "topic": "style",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-032",
+    "type": "single",
+    "stem": "虚拟环境工具不包括？",
+    "options": [
+      "venv",
+      "virtualenv",
+      "conda",
+      "pip-only"
+    ],
+    "answer": [
+      3
+    ],
+    "explain": "pip 管包，不管隔离。",
+    "professor_commentary": "租个独门小院再装修。",
+    "topic": "env",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-033",
+    "type": "single",
+    "stem": "pip 安装本地包的常用命令？",
+    "options": [
+      "pip run .",
+      "pip add .",
+      "pip install -e .",
+      "pip build ."
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "可编辑模式方便开发。",
+    "professor_commentary": "边写边用，工程效率高。",
+    "topic": "packaging",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-034",
+    "type": "single",
+    "stem": "__name__ == '__main__' 的用途？",
+    "options": [
+      "判断模块是否被直接运行",
+      "判断是否导入失败",
+      "判断 Python 版本",
+      "判断虚拟环境"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "便于模块既可导入又可脚本运行。",
+    "professor_commentary": "一鱼两吃。",
+    "topic": "modules",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-035",
+    "type": "single",
+    "stem": "import 时会执行模块顶层代码吗？",
+    "options": [
+      "不会",
+      "会执行一次",
+      "每次 import 都执行",
+      "只在 REPL 执行"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "模块导入时顶层会执行，并缓存于 sys.modules。",
+    "professor_commentary": "顶层别放重活。",
+    "topic": "modules",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-036",
+    "type": "single",
+    "stem": "浅拷贝与深拷贝工具在？",
+    "options": [
+      "copy 模块",
+      "shutil",
+      "pickle",
+      "gc"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "copy.copy / copy.deepcopy。",
+    "professor_commentary": "拷贝别走神。",
+    "topic": "memory",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-037",
+    "type": "single",
+    "stem": "is 与 == 的区别？",
+    "options": [
+      "同义",
+      "is 比较值相等",
+      "is 比较对象标识",
+      "== 比较身份"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "is 比身份，== 比内容。",
+    "professor_commentary": "双胞胎和同一个人的区别。",
+    "topic": "operators",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-038",
+    "type": "single",
+    "stem": "列表乘法 [0]*3 的结果？",
+    "options": [
+      "[0,0,0]",
+      "[0]*3",
+      "[0,0]",
+      "错误"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "乘法复制元素引用。",
+    "professor_commentary": "可变嵌套时要警惕别共享子列表。",
+    "topic": "list",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-039",
+    "type": "single",
+    "stem": "可哈希对象的必要条件？",
+    "options": [
+      "可变",
+      "实现 __hash__ 且不可变语义",
+      "一定是序列",
+      "一定可切片"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "hash 需稳定；可变对象做键风险大。",
+    "professor_commentary": "别让钥匙会变形。",
+    "topic": "hash",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-040",
+    "type": "single",
+    "stem": "集合的子集判断使用？",
+    "options": [
+      "< 或 <= 运算符",
+      "==",
+      "in",
+      "contains"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "set1 <= set2 表示子集。",
+    "professor_commentary": "数学味儿很足。",
+    "topic": "set",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-041",
+    "type": "single",
+    "stem": "f-string 语法前缀？",
+    "options": [
+      "r",
+      "b",
+      "f",
+      "u"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "f 前缀支持内插表达式。",
+    "professor_commentary": "像写模板，但更优雅。",
+    "topic": "strings",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-042",
+    "type": "single",
+    "stem": "字符串不可变，拼接大量小串高效做法？",
+    "options": [
+      "连续用 +",
+      "+=",
+      "join 收集后一次拼",
+      "map 拼"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "''.join(list_of_parts) 更高效。",
+    "professor_commentary": "先囤货，再出库。",
+    "topic": "strings",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-043",
+    "type": "single",
+    "stem": "列表推导式中 if 的位置？",
+    "options": [
+      "前面",
+      "中间表达式后面",
+      "最末尾必须 and",
+      "不能用"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "[expr for x in it if cond]。",
+    "professor_commentary": "读起来像自然语序。",
+    "topic": "comprehension",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-044",
+    "type": "single",
+    "stem": "enumerate 默认起始索引？",
+    "options": [
+      "-1",
+      "0",
+      "1",
+      "可变"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "可通过 start 指定。",
+    "professor_commentary": "数数从 0 开始。",
+    "topic": "iteration",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-045",
+    "type": "single",
+    "stem": "zip(*iterables) 的结果？",
+    "options": [
+      "列表",
+      "生成器/迭代器",
+      "元组",
+      "集合"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "zip 返回迭代器，惰性。",
+    "professor_commentary": "按列捆绑，走得更稳。",
+    "topic": "iteration",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-046",
+    "type": "single",
+    "stem": "any([]) 的结果？",
+    "options": [
+      "True",
+      "False",
+      "报错",
+      "None"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "空可迭代的 any 为 False，all([]) 为 True。",
+    "professor_commentary": "形式逻辑的温柔一刀。",
+    "topic": "builtins",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-047",
+    "type": "single",
+    "stem": "异常链可用关键字？",
+    "options": [
+      "because",
+      "raise ... from ...",
+      "throw ... cause ...",
+      "link"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "raise New from Old 保留上下文。",
+    "professor_commentary": "罪魁祸首要指名道姓。",
+    "topic": "exceptions",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-048",
+    "type": "single",
+    "stem": "with open(...,'w') 写文件的编码默认？",
+    "options": [
+      "utf-8",
+      "系统默认",
+      "ascii",
+      "latin-1"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "不显式写 encoding 取决系统区域设置。",
+    "professor_commentary": "跨平台要手动标注编码。",
+    "topic": "io",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-049",
+    "type": "single",
+    "stem": "assert 的适用场景？",
+    "options": [
+      "数据校验对用户输入",
+      "内部不变量/开发调试",
+      "异常处理替代品",
+      "生产错误处理"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "断言面向开发期，生产输入校验应抛异常。",
+    "professor_commentary": "别把扳手当安全带。",
+    "topic": "testing",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-050",
+    "type": "single",
+    "stem": "@decorator 放在函数前表示？",
+    "options": [
+      "类型注解",
+      "装饰器包装",
+      "宏展开",
+      "模板"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "等价于 func = decorator(func)。",
+    "professor_commentary": "把功能外挂成插件。",
+    "topic": "decorators",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-051",
+    "type": "single",
+    "stem": "上下文管理协议退出方法名？",
+    "options": [
+      "__leave__",
+      "__done__",
+      "__exit__",
+      "__out__"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "与 __enter__ 配对。",
+    "professor_commentary": "有始有终，程序也讲礼仪。",
+    "topic": "context",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-052",
+    "type": "single",
+    "stem": "读取大文件逐行处理最省内存？",
+    "options": [
+      "read() 全读",
+      "for line in file",
+      "readlines()",
+      "一次性 split"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "文件对象本身可迭代。",
+    "professor_commentary": "流水不腐，行读不堵。",
+    "topic": "io",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-053",
+    "type": "single",
+    "stem": "列表去重且保持插入顺序的简洁做法（Py3.7+）？",
+    "options": [
+      "set(lst)",
+      "dict.fromkeys(lst)",
+      "sorted(set(lst))",
+      "list(unique())"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "字典保持插入顺序，可用于去重保序。",
+    "professor_commentary": "老瓶装新酒，妙。",
+    "topic": "dict",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-054",
+    "type": "single",
+    "stem": "datetime.now() 返回？",
+    "options": [
+      "日期",
+      "日期时间",
+      "时间戳",
+      "时区对象"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "返回本地时区的 datetime（naive）。",
+    "professor_commentary": "时间问题要小心时区。",
+    "topic": "datetime",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-055",
+    "type": "single",
+    "stem": "计算列表长度用？",
+    "options": [
+      "len(lst)",
+      "lst.length()",
+      "size(lst)",
+      "count(lst)"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "len 是内建函数。",
+    "professor_commentary": "别带着别的语言口音。",
+    "topic": "builtins",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-056",
+    "type": "single",
+    "stem": "可迭代但非序列的例子？",
+    "options": [
+      "list",
+      "str",
+      "dict.keys() 视图",
+      "tuple"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "键视图是可迭代的集合视图。",
+    "professor_commentary": "接口即契约。",
+    "topic": "iteration",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-057",
+    "type": "single",
+    "stem": "读取 JSON 用？",
+    "options": [
+      "yaml.load",
+      "json.load/loads",
+      "pickle.load",
+      "ast.parse"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "标准库 json 足够应付多数场景。",
+    "professor_commentary": "先用 stdlib，再谈第三方。",
+    "topic": "stdlib",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-058",
+    "type": "single",
+    "stem": "浮点比较推荐做法？",
+    "options": [
+      "直接==",
+      "使用 math.isclose",
+      "转成字符串比对",
+      "取整再比"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "浮点有舍入误差，应设容差。",
+    "professor_commentary": "数学与工程握个手。",
+    "topic": "numerics",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-059",
+    "type": "single",
+    "stem": "列表复制独立对象的方式？",
+    "options": [
+      "b=a",
+      "b=a[:]",
+      "b=list(a)",
+      "二者皆可"
+    ],
+    "answer": [
+      3
+    ],
+    "explain": "切片/构造器创建浅拷贝；b=a 是同引用。",
+    "professor_commentary": "影子与本体要分清。",
+    "topic": "list",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-060",
+    "type": "single",
+    "stem": "哈希适合做字典键的类型？",
+    "options": [
+      "list",
+      "dict",
+      "set",
+      "tuple(内含不可变元素)"
+    ],
+    "answer": [
+      3
+    ],
+    "explain": "可哈希且语义不变。",
+    "professor_commentary": "钥匙不能变形。",
+    "topic": "hash",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-061",
+    "type": "multi",
+    "stem": "Python 真值为 False 的对象有：",
+    "options": [
+      "None",
+      "0",
+      "空序列/空映射",
+      "自定义对象一定为 False"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "空容器、0、None、False 为假；自定义对象默认 True。",
+    "professor_commentary": "掌握‘真值’直觉，写 if 更干净。",
+    "topic": "truthiness",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-062",
+    "type": "multi",
+    "stem": "关于可迭代与迭代器，正确的是：",
+    "options": [
+      "迭代器实现 __iter__ 和 __next__",
+      "可迭代实现 __iter__",
+      "所有可迭代都是迭代器",
+      "for 能消费可迭代即可"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "迭代器是更强的协议对象；可迭代未必是迭代器。",
+    "professor_commentary": "区分‘能遍历’与‘自己报站’。",
+    "topic": "iteration",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-063",
+    "type": "multi",
+    "stem": "列表推导式的优势：",
+    "options": [
+      "更简洁",
+      "通常更快",
+      "可读性一定更高",
+      "一次性构造列表"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "简洁且常快，但过长会影响可读性。",
+    "professor_commentary": "语法糖别过量。",
+    "topic": "comprehension",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-064",
+    "type": "multi",
+    "stem": "关于函数默认参数，正确的是：",
+    "options": [
+      "可变默认值会被共享",
+      "可用 None+内部赋值规避",
+      "默认值在定义时求值",
+      "每次调用都会重新计算"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "默认值在定义时绑定，慎用可变对象。",
+    "professor_commentary": "老教授最常看的坑之一。",
+    "topic": "functions",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-065",
+    "type": "multi",
+    "stem": "装饰器常见用途：",
+    "options": [
+      "缓存/记忆化",
+      "权限/鉴权",
+      "打日志/计时",
+      "替代所有设计模式"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "装饰器是函数式接口上的‘插座’。",
+    "professor_commentary": "别把瑞士军刀当重型机床。",
+    "topic": "decorators",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-066",
+    "type": "multi",
+    "stem": "上下文管理器适用场景：",
+    "options": [
+      "文件/网络连接",
+      "锁/资源管理",
+      "事务性操作",
+      "编译器优化"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "with 管收尾，资源用即还。",
+    "professor_commentary": "程序要讲卫生。",
+    "topic": "context",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-067",
+    "type": "multi",
+    "stem": "异常处理的好实践：",
+    "options": [
+      "捕获过宽会隐藏错误",
+      "只在能恢复时捕获",
+      "使用自定义异常层级",
+      "所有地方都 try/except"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "只捕获你能处理的异常类型。",
+    "professor_commentary": "错误要暴露出来，别闷坏了。",
+    "topic": "exceptions",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-068",
+    "type": "multi",
+    "stem": "字典相关说法正确：",
+    "options": [
+      "键需可哈希",
+      "遍历默认是键",
+      "字典保持插入顺序(Py3.7+)",
+      "键不允许任何不可变对象"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "键需稳定哈希；不可变对象通常可做键。",
+    "professor_commentary": "有序字典已成日常。",
+    "topic": "dict",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-069",
+    "type": "multi",
+    "stem": "集合操作：",
+    "options": [
+      "并集 |",
+      "交集 &",
+      "差集 -",
+      "对称差 ^"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "四则运算各司其职。",
+    "professor_commentary": "一行代码搞定集合代数。",
+    "topic": "set",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-070",
+    "type": "multi",
+    "stem": "文件读写注意：",
+    "options": [
+      "文本模式注意编码",
+      "二进制模式不解码",
+      "with 自动关闭",
+      "open 默认 utf-8 跨平台一致"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "默认编码因平台而异，建议显式 encoding。",
+    "professor_commentary": "IO 的坑多在细节。",
+    "topic": "io",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-071",
+    "type": "multi",
+    "stem": "迭代工具：",
+    "options": [
+      "enumerate 增加索引",
+      "zip 并行遍历",
+      "range 惰性序列",
+      "map 返回列表"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "在 Py3，map 返回迭代器而非列表。",
+    "professor_commentary": "惰性才省内存。",
+    "topic": "iteration",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-072",
+    "type": "multi",
+    "stem": "sorted 的参数：",
+    "options": [
+      "key 指定排序键",
+      "reverse= True 倒序",
+      "能排序任意不可比较对象",
+      "稳定排序"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "sorted 稳定；不可比较类型需提供 key。",
+    "professor_commentary": "排序先想 key。",
+    "topic": "algorithms",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-073",
+    "type": "multi",
+    "stem": "面向对象基础：",
+    "options": [
+      "类方法用 @classmethod",
+      "静态方法用 @staticmethod",
+      "实例方法第一个参数习惯名 self",
+      "__init__ 返回实例"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "__init__ 只初始化不返回实例。",
+    "professor_commentary": "别让构造像工厂。",
+    "topic": "oop",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-074",
+    "type": "multi",
+    "stem": "数据模型/魔术方法：",
+    "options": [
+      "__len__ 支持 len()",
+      "__getitem__ 支持切片/索引",
+      "__iter__ 使对象可迭代",
+      "__del__ 必须实现"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "只按需实现协议；__del__ 谨慎使用。",
+    "professor_commentary": "与其善后，不如善始。",
+    "topic": "data-model",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-075",
+    "type": "multi",
+    "stem": "模块与包：",
+    "options": [
+      "包目录含 __init__.py",
+      "import 会执行顶层代码一次",
+      "sys.path 决定查找路径",
+      "循环导入一定没问题"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "循环依赖常引发半初始化问题。",
+    "professor_commentary": "模块组织胜过瞎 import。",
+    "topic": "modules",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-076",
+    "type": "multi",
+    "stem": "PEP8 风格建议：",
+    "options": [
+      "4 空格缩进",
+      "每行不宜过长",
+      "命名下划线风格",
+      "必须用 Tab"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "一致的风格让团队合作更轻松。",
+    "professor_commentary": "可读性胜过奇技淫巧。",
+    "topic": "style",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-077",
+    "type": "multi",
+    "stem": "测试与断言：",
+    "options": [
+      "pytest 可参数化用例",
+      "unittest 是标准库",
+      "assert 适合内部不变量",
+      "assert 替代输入校验"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "输入校验用显式异常更合适。",
+    "professor_commentary": "测试是代码的保险。",
+    "topic": "testing",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-078",
+    "type": "multi",
+    "stem": "性能与内存：",
+    "options": [
+      "列表推导常优于显式 for",
+      "生成器节省内存",
+      "全局变量一定更快",
+      "使用内建与 C 实现函数更快"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "内建经过 C 优化，常更快。",
+    "professor_commentary": "别跟解释器抬杠。",
+    "topic": "performance",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-079",
+    "type": "multi",
+    "stem": "并发基础：",
+    "options": [
+      "线程适合 I/O 密集",
+      "GIL 限制纯 Python CPU 并行",
+      "multiprocessing 可用多核",
+      "asyncio 适合并发 I/O"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "选择匹配问题类型的并发手段。",
+    "professor_commentary": "别拿锤子修表。",
+    "topic": "concurrency",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-080",
+    "type": "multi",
+    "stem": "异常与资源清理：",
+    "options": [
+      "finally 总会执行",
+      "with 可确保释放",
+      "try/except 过宽掩错误",
+      "contextlib 提供辅助"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "except 过宽往往害人。",
+    "professor_commentary": "清理要有制度。",
+    "topic": "exceptions",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-081",
+    "type": "multi",
+    "stem": "字符串处理：",
+    "options": [
+      ".strip 去两端空白",
+      ".split 分割",
+      ".join 合并",
+      ".format 格式化"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "四件套掌握日常够用。",
+    "professor_commentary": "工欲善其事，先备四件套。",
+    "topic": "strings",
+    "difficulty": "intro"
+  },
+  {
+    "id": "py-082",
+    "type": "multi",
+    "stem": "正则表达式（re）：",
+    "options": [
+      "re.match 从起始匹配",
+      "re.search 全文搜索",
+      "分组用 ()",
+      "原始字符串避免转义地狱"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "r\"...\" 让反斜杠安静些。",
+    "professor_commentary": "正则要少而精。",
+    "topic": "regex",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-083",
+    "type": "multi",
+    "stem": "JSON 与序列化：",
+    "options": [
+      "json.dump 写文件",
+      "json.dumps 转字符串",
+      "pickle 可序列化任意对象",
+      "pickle 安全可反序列化不可信输入"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "pickle 不安全，切勿反序列化不可信数据。",
+    "professor_commentary": "便利背后的风险要懂。",
+    "topic": "serialization",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-084",
+    "type": "multi",
+    "stem": "时间与时区：",
+    "options": [
+      "datetime 可 naive 或 aware",
+      "time.time 返回秒级时间戳",
+      "pytz/zoneinfo 处理时区",
+      "aware/naive 可随意混用"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "aware 与 naive 混用会抛错或出错。",
+    "professor_commentary": "时间是坑王。",
+    "topic": "datetime",
+    "difficulty": "hard"
+  },
+  {
+    "id": "py-085",
+    "type": "multi",
+    "stem": "迭代工具 itertools：",
+    "options": [
+      "chain 串联迭代器",
+      "islice 切片",
+      "product 笛卡尔积",
+      "accumulate 前缀和"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "善用 itertools 写出又快又美的循环。",
+    "professor_commentary": "标准库是含金量最高的书。",
+    "topic": "itertools",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-086",
+    "type": "multi",
+    "stem": "类型注解与静态检查：",
+    "options": [
+      "typing.List/Dict 等泛型",
+      "mypy/pyright 可检查",
+      "注解不强制运行期检查",
+      "TypedDict/Protocol 结构化类型"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "类型系统帮你在提交前抓 Bug。",
+    "professor_commentary": "规范先行，Bug 少一半。",
+    "topic": "typing",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-087",
+    "type": "multi",
+    "stem": "数据类 dataclasses：",
+    "options": [
+      "@dataclass 生成样板代码",
+      "可自动 __init__/__repr__",
+      "默认可比较",
+      "字段默认值需放在无默认值之后"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "减少样板等于减少错误面。",
+    "professor_commentary": "别手写能自动生成的代码。",
+    "topic": "dataclass",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-088",
+    "type": "multi",
+    "stem": "路径处理 pathlib：",
+    "options": [
+      "Path 对象/运算符 / 拼接",
+      "read_text/write_text 便捷 IO",
+      "与 os.path 完全相同 API",
+      "跨平台分隔符自动处理"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "pathlib 更现代、更安全。",
+    "professor_commentary": "少操心斜杠方向。",
+    "topic": "pathlib",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-089",
+    "type": "multi",
+    "stem": "日志 logging：",
+    "options": [
+      "logger.setLevel 控制级别",
+      "不同 handler 不同输出",
+      "basicConfig 快速上手",
+      "print 完全可以替代 logging"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "logging 更可控、可路由、可分级。",
+    "professor_commentary": "大工程别全靠 print。",
+    "topic": "logging",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-090",
+    "type": "multi",
+    "stem": "单元测试组织：",
+    "options": [
+      "tests/ 目录结构",
+      "fixtures 复用准备",
+      "断言清晰具体",
+      "测试必须依赖外网"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "隔离外部依赖更稳定。",
+    "professor_commentary": "可重复才叫测试。",
+    "topic": "testing",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-091",
+    "type": "multi",
+    "stem": "集合与映射的常用方法：",
+    "options": [
+      "dict.get 提供默认",
+      "set.add 添加",
+      "set.update 批量合并",
+      "dict.popitem LIFO(Py3.7+实现相关)"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "理解方法的时序与复杂度很重要。",
+    "professor_commentary": "熟悉手感，写得顺手。",
+    "topic": "set-dict",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-092",
+    "type": "multi",
+    "stem": "列表与序列：",
+    "options": [
+      "list/tuple 切片半开区间",
+      "tuple 不可变",
+      "list 原地 sort",
+      "序列都支持乘法"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "不是所有序列都支持乘法（如自定义序列）。",
+    "professor_commentary": "别想当然。",
+    "topic": "sequences",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-093",
+    "type": "multi",
+    "stem": "上下文工具 contextlib：",
+    "options": [
+      "contextmanager 装饰器",
+      "closing 包装需关闭对象",
+      "suppress 抑制特定异常",
+      "ExitStack 组合多个上下文"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "把 with 玩出花，但别乱用。",
+    "professor_commentary": "优雅收尾的艺术。",
+    "topic": "context",
+    "difficulty": "hard"
+  },
+  {
+    "id": "py-094",
+    "type": "multi",
+    "stem": "装饰器细节：",
+    "options": [
+      "functools.wraps 保留元数据",
+      "可接受参数的装饰器需三层嵌套",
+      "装饰器等价于高阶函数",
+      "装饰器改变函数对象"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "wraps 让调试与文档更友好。",
+    "professor_commentary": "礼貌地戴上面具。",
+    "topic": "decorators",
+    "difficulty": "hard"
+  },
+  {
+    "id": "py-095",
+    "type": "multi",
+    "stem": "调试与诊断：",
+    "options": [
+      "pdb/ipdb 断点",
+      "traceback 定位栈",
+      "logging 采样与分级",
+      "print 递归打印一切最优"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "手段要合适，不能只会 ‘print 驱动开发’。",
+    "professor_commentary": "工欲善其事，先备工具箱。",
+    "topic": "debugging",
+    "difficulty": "med"
+  },
+  {
+    "id": "py-096",
+    "type": "multi",
+    "stem": "内存与引用：",
+    "options": [
+      "循环引用可由 gc 处理",
+      "弱引用 weakref",
+      "del 只是减少引用计数",
+      "手动 malloc/free"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "Python 管理内存，不提供手动 free。",
+    "professor_commentary": "理解引用比死记函数名重要。",
+    "topic": "memory",
+    "difficulty": "hard"
+  },
+  {
+    "id": "py-097",
+    "type": "multi",
+    "stem": "并发陷阱：",
+    "options": [
+      "GIL 限制 CPU 并行",
+      "I/O 密集用线程/协程",
+      "CPU 密集用进程/原生扩展",
+      "数据竞态需锁/队列"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "模型对齐：任务-工具要匹配。",
+    "professor_commentary": "别跟 GIL 硬碰硬。",
+    "topic": "concurrency",
+    "difficulty": "hard"
+  },
+  {
+    "id": "py-098",
+    "type": "multi",
+    "stem": "异步 asyncio：",
+    "options": [
+      "async/await 语法",
+      "事件循环",
+      "await 只能在协程中",
+      "与多进程互斥"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "async 与多进程可结合使用。",
+    "professor_commentary": "异步不是银弹。",
+    "topic": "asyncio",
+    "difficulty": "hard"
+  },
+  {
+    "id": "py-099",
+    "type": "multi",
+    "stem": "打包发布基础：",
+    "options": [
+      "pyproject.toml 描述项目",
+      "PEP 517/518 构建接口",
+      "wheel 是已构建分发格式",
+      "必须上传源码包才能用"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "wheel 无需编译即可安装。",
+    "professor_commentary": "把工程做完整。",
+    "topic": "packaging",
+    "difficulty": "hard"
+  },
+  {
+    "id": "py-100",
+    "type": "multi",
+    "stem": "代码风格与可读性：",
+    "options": [
+      "清晰命名",
+      "小函数单一职责",
+      "注释讲‘为什么’",
+      "所有复杂度都用注释掩盖"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "注释无法替代设计与重构。",
+    "professor_commentary": "写给人看的代码，机器顺便会。",
+    "topic": "best-practice",
+    "difficulty": "intro"
+  }
+]

@@ -1,0 +1,1881 @@
+[
+  {
+    "id": "q-001",
+    "type": "single",
+    "stem": "Transformer 的核心模块是？",
+    "options": [
+      "RNN 循环",
+      "卷积",
+      "注意力",
+      "池化"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "核心在注意力（Self/Multi-Head）。",
+    "professor_commentary": "先抓主线：注意力。",
+    "topic": "overview",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-002",
+    "type": "single",
+    "stem": "Self-Attention 中每个位置与谁交互？",
+    "options": [
+      "相邻",
+      "固定窗口",
+      "全序列",
+      "随机"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "标准自注意力可看全序列。",
+    "professor_commentary": "表达力强，也贵。",
+    "topic": "self-attention",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-003",
+    "type": "single",
+    "stem": "缩放因子 1/√d_k 的目的是？",
+    "options": [
+      "放大学习率",
+      "防 softmax 饱和",
+      "节省显存",
+      "提升并行"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "避免相似度过大导致梯度不稳。",
+    "professor_commentary": "小小缩放，大大稳定。",
+    "topic": "self-attention",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-004",
+    "type": "single",
+    "stem": "Multi-Head 的直觉？",
+    "options": [
+      "降参",
+      "并行训练",
+      "在不同子空间学不同关系",
+      "替代残差"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "多头解耦表示，捕捉多样关系。",
+    "professor_commentary": "不是噱头，是解耦。",
+    "topic": "multi-head",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-005",
+    "type": "single",
+    "stem": "位置编码的根本作用？",
+    "options": [
+      "扩大词表",
+      "注入位置信息",
+      "降损失",
+      "加速推理"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "打破置换不变性。",
+    "professor_commentary": "没位置就没顺序。",
+    "topic": "positional-encoding",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-006",
+    "type": "single",
+    "stem": "原始论文使用的 PE 是？",
+    "options": [
+      "可学习绝对",
+      "正弦/余弦固定",
+      "卷积式",
+      "RoPE"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "Vaswani17 用正弦/余弦。",
+    "professor_commentary": "先会基础款。",
+    "topic": "positional-encoding",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-007",
+    "type": "single",
+    "stem": "残差连接的好处是？",
+    "options": [
+      "降学习率",
+      "利于深层训练与梯度传播",
+      "减参数",
+      "增词表"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "缓解退化，助力深网。",
+    "professor_commentary": "深但不糊。",
+    "topic": "residual",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-008",
+    "type": "single",
+    "stem": "LayerNorm 通常放在？",
+    "options": [
+      "仅 Embedding",
+      "仅输出层",
+      "每子层前/后（变体）",
+      "不使用"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "常见 Pre-LN 或 Post-LN。",
+    "professor_commentary": "顺序影响训练性。",
+    "topic": "normalization",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-009",
+    "type": "single",
+    "stem": "解码器的因果掩码用于？",
+    "options": [
+      "屏蔽 PAD",
+      "禁止看未来",
+      "扩大感受野",
+      "降并行"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "自回归只能看过去。",
+    "professor_commentary": "考试别偷看后题。",
+    "topic": "masking",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-010",
+    "type": "single",
+    "stem": "Cross-Attention 的 K/V 来自？",
+    "options": [
+      "解码器",
+      "编码器输出",
+      "词表",
+      "随机"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "解码器用 Q 读编码器的 K/V。",
+    "professor_commentary": "带着问题去看材料。",
+    "topic": "encoder-decoder",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-011",
+    "type": "single",
+    "stem": "语言模型常用损失？",
+    "options": [
+      "MSE",
+      "交叉熵",
+      "Triplet",
+      "InfoNCE"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "自回归 LM 用交叉熵。",
+    "professor_commentary": "把基本功练硬。",
+    "topic": "training",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-012",
+    "type": "single",
+    "stem": "BPE/WordPiece 的目的？",
+    "options": [
+      "降维",
+      "处理未登录词与覆盖",
+      "建句法树",
+      "增位置信息"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "兼顾词频与覆盖。",
+    "professor_commentary": "好分词是好开始。",
+    "topic": "tokenization",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-013",
+    "type": "single",
+    "stem": "自回归注意力掩码常是？",
+    "options": [
+      "全可见",
+      "下三角",
+      "上三角",
+      "随机"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "仅看过去与当前。",
+    "professor_commentary": "时间只向前。",
+    "topic": "masking",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-014",
+    "type": "single",
+    "stem": "温度（temperature）控制？",
+    "options": [
+      "学习率",
+      "随机性/平滑度",
+      "梯度截断",
+      "批大小"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "温度高更随机。",
+    "professor_commentary": "别把温度当灵丹。",
+    "topic": "decoding",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-015",
+    "type": "single",
+    "stem": "Top-k/Top-p 用于？",
+    "options": [
+      "训练加速",
+      "控制解码多样性",
+      "数据清洗",
+      "词表裁剪"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "限制候选集合方式不同。",
+    "professor_commentary": "各有脾气。",
+    "topic": "decoding",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-016",
+    "type": "single",
+    "stem": "Transformer 相比 RNN 的优势？",
+    "options": [
+      "参数更少",
+      "并行且长程依赖更直接",
+      "一定更快",
+      "不要数据"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "并行友好，依赖建模强。",
+    "professor_commentary": "算力时代的选择。",
+    "topic": "overview",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-017",
+    "type": "single",
+    "stem": "Padding Mask 的作用？",
+    "options": [
+      "提温度",
+      "屏蔽 PAD",
+      "增多样性",
+      "提 top-k"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "避免无效位置污染注意力与损失。",
+    "professor_commentary": "别让空椅子举手。",
+    "topic": "masking",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-018",
+    "type": "single",
+    "stem": "Embedding 维度通常与？",
+    "options": [
+      "词表大小",
+      "隐藏维度一致",
+      "头数",
+      "batch"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "常设 d_model。",
+    "professor_commentary": "嵌入=模型维。",
+    "topic": "embedding",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-019",
+    "type": "single",
+    "stem": "单头维度常取？",
+    "options": [
+      "=隐藏维",
+      "隐藏维/头数",
+      "词表/头数",
+      "任意"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "d_head = d_model / n_head。",
+    "professor_commentary": "别乱配比。",
+    "topic": "multi-head",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-020",
+    "type": "single",
+    "stem": "常用优化器？",
+    "options": [
+      "SGD 无动量",
+      "Adam/AdamW",
+      "Adadelta",
+      "LBFGS"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "Adam(W) 是主力。",
+    "professor_commentary": "先用靠谱的。",
+    "topic": "optimization",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-021",
+    "type": "single",
+    "stem": "学习率 warmup 的目的？",
+    "options": [
+      "开局稳住梯度",
+      "降最终 LR",
+      "增 batch",
+      "提温度"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "防初期爆炸。",
+    "professor_commentary": "热身再起跑。",
+    "topic": "optimization",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-022",
+    "type": "single",
+    "stem": "Label Smoothing 的益处？",
+    "options": [
+      "增过拟合",
+      "减过拟合/更校准",
+      "降并行",
+      "替代正则"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "减少过度自信。",
+    "professor_commentary": "盐放一点就好。",
+    "topic": "regularization",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-023",
+    "type": "single",
+    "stem": "自注意力复杂度随 n 为？",
+    "options": [
+      "O(n)",
+      "O(n log n)",
+      "O(n^2)",
+      "O(1)"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "二次复杂度。",
+    "professor_commentary": "长序列要想办法。",
+    "topic": "efficient-attention",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-024",
+    "type": "single",
+    "stem": "缩放点积注意力的缩放与何维相关？",
+    "options": [
+      "d_model",
+      "d_k",
+      "词表",
+      "头数"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "除以√d_k。",
+    "professor_commentary": "数学救场。",
+    "topic": "self-attention",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-025",
+    "type": "single",
+    "stem": "FFN 通常结构？",
+    "options": [
+      "1×1 卷积",
+      "两层线性+激活",
+      "LSTM 单元",
+      "池化"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "d_model→d_ff→d_model。",
+    "professor_commentary": "小 MLP，大用处。",
+    "topic": "ffn",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-026",
+    "type": "single",
+    "stem": "Post-LN 常见顺序？",
+    "options": [
+      "LN→子层→残差",
+      "子层→残差→LN",
+      "残差→子层→LN",
+      "子层→LN→残差"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "还有 Pre-LN 变体。",
+    "professor_commentary": "顺序非细枝末节。",
+    "topic": "normalization",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-027",
+    "type": "single",
+    "stem": "大模型激活函数常用？",
+    "options": [
+      "Sigmoid",
+      "Tanh",
+      "ReLU/GELU",
+      "Softplus"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "GELU 更常见。",
+    "professor_commentary": "平滑好优化。",
+    "topic": "activation",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-028",
+    "type": "single",
+    "stem": "训练 LM 的优化目标针对？",
+    "options": [
+      "句子级",
+      "每个 token 条件概率",
+      "文档级",
+      "段落级"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "逐 token 预测。",
+    "professor_commentary": "细颗粒更可控。",
+    "topic": "training",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-029",
+    "type": "single",
+    "stem": "解码器层包含子层数？",
+    "options": [
+      "1",
+      "2",
+      "3（自注意/交叉/FFN）",
+      "4"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "标准 seq2seq 解码器为 3。",
+    "professor_commentary": "桥梁要有三段。",
+    "topic": "architecture",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-030",
+    "type": "single",
+    "stem": "Teacher Forcing 含义？",
+    "options": [
+      "喂模型输出",
+      "喂真实目标",
+      "不用输入",
+      "喂随机"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "训练时下一步输入为金标签。",
+    "professor_commentary": "考前带着答案练。",
+    "topic": "training",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-031",
+    "type": "single",
+    "stem": "注意力中 Dropout 常放在？",
+    "options": [
+      "softmax 后权重",
+      "Q/K/V 前",
+      "温度前",
+      "词表前"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "对权重做正则。",
+    "professor_commentary": "别押独门赌注。",
+    "topic": "regularization",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-032",
+    "type": "single",
+    "stem": "长序列高效注意力的动机？",
+    "options": [
+      "减梯度",
+      "降 O(n^2) 开销",
+      "增随机",
+      "替代位置"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "复杂度/显存压力大。",
+    "professor_commentary": "钱要花在刀口。",
+    "topic": "efficient-attention",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-033",
+    "type": "single",
+    "stem": "MLM 常用于？",
+    "options": [
+      "自回归解码器",
+      "双向编码器(BERT)",
+      "图像编码器",
+      "强化学习"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "BERT 典型。",
+    "professor_commentary": "读懂上下文的套路。",
+    "topic": "training",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-034",
+    "type": "single",
+    "stem": "自回归 LM 代表？",
+    "options": [
+      "BERT",
+      "GPT 系列",
+      "ELMo",
+      "word2vec"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "GPT 为 decoder-only。",
+    "professor_commentary": "家族谱要熟。",
+    "topic": "overview",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-035",
+    "type": "single",
+    "stem": "RoPE 的直觉？",
+    "options": [
+      "去除位置",
+      "复平面旋转编码相对位移",
+      "仅绝对位置",
+      "只图像"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "相对更利外推。",
+    "professor_commentary": "记“差”更稳。",
+    "topic": "positional-encoding",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-036",
+    "type": "single",
+    "stem": "梯度裁剪用途？",
+    "options": [
+      "防爆炸",
+      "提并行",
+      "增参数",
+      "替代优化器"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "限制范数上界。",
+    "professor_commentary": "先止血再手术。",
+    "topic": "stability",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-037",
+    "type": "single",
+    "stem": "训练稳定性差先查？",
+    "options": [
+      "数据打乱",
+      "学习率与 warmup",
+      "词表大小",
+      "推理温度"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "LR 往往是罪魁。",
+    "professor_commentary": "调 LR 比祈祷有效。",
+    "topic": "stability",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-038",
+    "type": "single",
+    "stem": "Byte-Level BPE 优势？",
+    "options": [
+      "词表极大",
+      "多语言/稀有字符鲁棒",
+      "只能英文",
+      "不能表情"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "统一字节空间。",
+    "professor_commentary": "一把钥匙开万门。",
+    "topic": "tokenization",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-039",
+    "type": "single",
+    "stem": "推理显存简化？",
+    "options": [
+      "增 batch",
+      "量化 8/4bit",
+      "增 LR",
+      "去掩码"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "权重量化省显存。",
+    "professor_commentary": "减脂不减肌。",
+    "topic": "inference",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-040",
+    "type": "single",
+    "stem": "KV Cache 作用？",
+    "options": [
+      "存梯度",
+      "缓存历史 K/V",
+      "存词表",
+      "存优化器"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "避免重复计算历史注意力。",
+    "professor_commentary": "别翻旧账。",
+    "topic": "inference",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-041",
+    "type": "single",
+    "stem": "长上下文‘滑动窗口’策略指？",
+    "options": [
+      "随机删 token",
+      "仅保留最近或混合局部+全局",
+      "只看首窗",
+      "禁用缓存"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "局部关注+全局锚点。",
+    "professor_commentary": "近处细看，远处有灯塔。",
+    "topic": "efficient-attention",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-042",
+    "type": "single",
+    "stem": "Decoder-only 通常？",
+    "options": [
+      "仅自注意+FFN",
+      "必含交叉注意",
+      "仅 FFN",
+      "仅卷积"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "自回归解码。",
+    "professor_commentary": "独立写作。",
+    "topic": "architecture",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-043",
+    "type": "single",
+    "stem": "BERT 训练目标常为？",
+    "options": [
+      "自回归",
+      "MLM/NSP",
+      "强化学习",
+      "对比必需"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "掩码预测与句对。",
+    "professor_commentary": "读者型模型。",
+    "topic": "training",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-044",
+    "type": "single",
+    "stem": "指令微调常配合？",
+    "options": [
+      "RLHF/DPO 等偏好对齐",
+      "仅监督",
+      "仅无监督",
+      "仅强化"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "对齐人类偏好。",
+    "professor_commentary": "让模型更“懂人”。",
+    "topic": "alignment",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-045",
+    "type": "single",
+    "stem": "LoRA 思想？",
+    "options": [
+      "全冻住",
+      "低秩适配器只训小矩阵",
+      "只训词表",
+      "只训 LN"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "少量参数适配任务。",
+    "professor_commentary": "瘦身微调。",
+    "topic": "peft",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-046",
+    "type": "single",
+    "stem": "梯度检查点权衡？",
+    "options": [
+      "省显存增计算",
+      "省算力增显存",
+      "都减",
+      "都增"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "反向重算激活。",
+    "professor_commentary": "时间换空间。",
+    "topic": "systems",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-047",
+    "type": "single",
+    "stem": "BatchNorm 少用于 Transformer 因？",
+    "options": [
+      "实现难",
+      "可变长/小 batch 不稳，LN 更合适",
+      "参数太多",
+      "无法反传"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "LN 与 NLP 更配。",
+    "professor_commentary": "对症下药。",
+    "topic": "normalization",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-048",
+    "type": "single",
+    "stem": "更换 tokenizer 需注意？",
+    "options": [
+      "无需再训",
+      "影响嵌入/头部",
+      "仅影响速度",
+      "仅影响显存"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "映射变了要适配。",
+    "professor_commentary": "切词不同世界不同。",
+    "topic": "tokenization",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-049",
+    "type": "single",
+    "stem": "LLM 训练首要资源瓶颈？",
+    "options": [
+      "带宽",
+      "显存/算力",
+      "磁盘",
+      "温度"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "决定 batch/长度/规模。",
+    "professor_commentary": "天花板先量。",
+    "topic": "systems",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-050",
+    "type": "single",
+    "stem": "Beam Search 特点？",
+    "options": [
+      "必提事实性",
+      "多条高概率路径，可能降多样性",
+      "纯随机",
+      "仅用于训练"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "稳但易套路。",
+    "professor_commentary": "别把稳当好。",
+    "topic": "decoding",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-051",
+    "type": "single",
+    "stem": "长文总结易出现？",
+    "options": [
+      "过拟合",
+      "遗漏/幻觉",
+      "训练发散",
+      "词表爆炸"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "上下文难记全。",
+    "professor_commentary": "证据先行。",
+    "topic": "tasks",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-052",
+    "type": "single",
+    "stem": "EOS 作用？",
+    "options": [
+      "起始",
+      "结束",
+      "填充",
+      "掩码"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "指示停止。",
+    "professor_commentary": "该收尾时收尾。",
+    "topic": "tokenization",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-053",
+    "type": "single",
+    "stem": "FFN 常见维度关系？",
+    "options": [
+      "d→d",
+      "d→4d→d",
+      "d→d_k→d",
+      "d→V→d"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "中间扩大后再压回。",
+    "professor_commentary": "给非线性空间。",
+    "topic": "ffn",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-054",
+    "type": "single",
+    "stem": "QK^T 形状为 [L,L] 中 L 是？",
+    "options": [
+      "词表",
+      "序列长度",
+      "头数",
+      "batch"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "对位相关性矩阵。",
+    "professor_commentary": "别混‘长’与‘大’。",
+    "topic": "self-attention",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-055",
+    "type": "single",
+    "stem": "Attention Dropout 在？",
+    "options": [
+      "softmax 前",
+      "softmax 后权重",
+      "输出投影前",
+      "嵌入前"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "对权重做正则。",
+    "professor_commentary": "均衡关注。",
+    "topic": "regularization",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-056",
+    "type": "single",
+    "stem": "预训练与微调关系？",
+    "options": [
+      "从零开始",
+      "先通识再专攻",
+      "仅换词表",
+      "仅换优化器"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "通用→任务。",
+    "professor_commentary": "先打地基。",
+    "topic": "training",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-057",
+    "type": "single",
+    "stem": "词表越大意味着？",
+    "options": [
+      "嵌入/LM Head 参数更多",
+      "更稳",
+      "上下文更长",
+      "更省显存"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "参数线性增。",
+    "professor_commentary": "账要会算。",
+    "topic": "tokenization",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-058",
+    "type": "single",
+    "stem": "系统提示作用？",
+    "options": [
+      "设定角色与边界",
+      "提 LR",
+      "控 batch",
+      "替代数据"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "约束行为与风格。",
+    "professor_commentary": "先立规矩。",
+    "topic": "prompting",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-059",
+    "type": "single",
+    "stem": "长上下文常见 RAG 做法？",
+    "options": [
+      "只增大模型",
+      "检索相关文档拼进上下文",
+      "只多训几轮",
+      "去掩码"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "把资料带上。",
+    "professor_commentary": "带着书开卷。",
+    "topic": "rag",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-060",
+    "type": "single",
+    "stem": "RoPE/ALiBi 的共同目标？",
+    "options": [
+      "更友好地长程外推",
+      "降词表",
+      "替代 LN",
+      "替代注意力"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "编码相对/距离信息。",
+    "professor_commentary": "记‘差’更稳。",
+    "topic": "positional-encoding",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-061",
+    "type": "multi",
+    "stem": "Transformer 关键组成：",
+    "options": [
+      "自注意力",
+      "残差连接",
+      "LSTM 门",
+      "前馈网络"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "注意力+残差/LN+FFN。",
+    "professor_commentary": "骨架清晰就不乱。",
+    "topic": "overview",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-062",
+    "type": "multi",
+    "stem": "位置编码说法正确：",
+    "options": [
+      "解决位置信息丢失",
+      "只有绝对一种",
+      "可用相对/RoPE",
+      "外推完全无风险"
+    ],
+    "answer": [
+      0,
+      2
+    ],
+    "explain": "相对/旋转类常更稳。",
+    "professor_commentary": "别迷信万能。",
+    "topic": "positional-encoding",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-063",
+    "type": "multi",
+    "stem": "Mask 相关：",
+    "options": [
+      "Padding Mask 屏蔽 PAD",
+      "Causal Mask 防未来",
+      "两者相同",
+      "可同时用"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "目标不同可叠加。",
+    "professor_commentary": "‘谁不能看’+‘何时不能看’。",
+    "topic": "masking",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-064",
+    "type": "multi",
+    "stem": "稳定训练做法：",
+    "options": [
+      "warmup",
+      "Label Smoothing",
+      "去掉残差",
+      "梯度裁剪"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "三板斧常见有效。",
+    "professor_commentary": "稳字当头。",
+    "topic": "stability",
+    "difficulty": "intro"
+  },
+  {
+    "id": "q-065",
+    "type": "multi",
+    "stem": "自注意力劣势：",
+    "options": [
+      "O(n^2)",
+      "无法并行",
+      "长序列显存大",
+      "不能处理图像"
+    ],
+    "answer": [
+      0,
+      2
+    ],
+    "explain": "并行性强但二次复杂度。",
+    "professor_commentary": "优缺点并存。",
+    "topic": "efficient-attention",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-066",
+    "type": "multi",
+    "stem": "微调常见：",
+    "options": [
+      "全参微调",
+      "LoRA/Adapter",
+      "只训词表",
+      "SFT+对齐(RLHF/DPO)"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "PEFT 降成本。",
+    "professor_commentary": "性价比为王。",
+    "topic": "finetune",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-067",
+    "type": "multi",
+    "stem": "解码多样性：",
+    "options": [
+      "温度↑更随机",
+      "Top-p↓更保守",
+      "Beam↑一定更有创意",
+      "Top-k↑候选更多"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "Beam 大多样性常降。",
+    "professor_commentary": "稳与活的权衡。",
+    "topic": "decoding",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-068",
+    "type": "multi",
+    "stem": "RAG 通常包含：",
+    "options": [
+      "检索器",
+      "重排序/过滤",
+      "把文档拼提示",
+      "强制只输出原文"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "既要找得到也要找得准。",
+    "professor_commentary": "证据优先。",
+    "topic": "rag",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-069",
+    "type": "multi",
+    "stem": "评估常见指标：",
+    "options": [
+      "PPL",
+      "任务指标(ROUGE/EM)",
+      "FPS",
+      "人类偏好评测"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "多维度更可靠。",
+    "professor_commentary": "别迷信单数。",
+    "topic": "evaluation",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-070",
+    "type": "multi",
+    "stem": "幻觉的可能因素：",
+    "options": [
+      "缺少知识/上下文",
+      "激进解码",
+      "训练噪声",
+      "因果掩码"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "证据不足或策略不当易编造。",
+    "professor_commentary": "材料为王。",
+    "topic": "factuality",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-071",
+    "type": "multi",
+    "stem": "长程建模思路：",
+    "options": [
+      "更长上下文",
+      "稀疏/线性注意力",
+      "分块+全局 token",
+      "去 LN"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "结构与训练双向发力。",
+    "professor_commentary": "架构先行。",
+    "topic": "efficient-attention",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-072",
+    "type": "multi",
+    "stem": "部署优化：",
+    "options": [
+      "KV Cache",
+      "量化",
+      "并行",
+      "关闭掩码"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "掩码不能关。",
+    "professor_commentary": "提速守原则。",
+    "topic": "inference",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-073",
+    "type": "multi",
+    "stem": "Tokenizer 正确说法：",
+    "options": [
+      "多种子词法可用",
+      "Byte-Level 更鲁棒",
+      "词表越大推理越快",
+      "更换会影响嵌入/头"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "分词影响映射与性能。",
+    "professor_commentary": "切词即世界。",
+    "topic": "tokenization",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-074",
+    "type": "multi",
+    "stem": "处理多任务/指令：",
+    "options": [
+      "系统提示设风格边界",
+      "few-shot 示例",
+      "一定不如零样本",
+      "工具/函数调用协议"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "规则+示例+接口。",
+    "professor_commentary": "讲清楚，更好用。",
+    "topic": "prompting",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-075",
+    "type": "multi",
+    "stem": "训练曲线震荡可能因：",
+    "options": [
+      "LR 过大",
+      "warmup 过短",
+      "数据顺序固定",
+      "EOS 过早"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "先看 LR/调度/打乱。",
+    "professor_commentary": "把节奏打匀。",
+    "topic": "stability",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-076",
+    "type": "multi",
+    "stem": "安全与对齐：",
+    "options": [
+      "SFT",
+      "RLHF/DPO",
+      "安全红队/拒答",
+      "去掉位置编码"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "训练+策略并重。",
+    "professor_commentary": "只删位置不可取。",
+    "topic": "safety",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-077",
+    "type": "multi",
+    "stem": "Encoder-Decoder 优势常见于：",
+    "options": [
+      "机器翻译",
+      "摘要",
+      "代码补全也可",
+      "图像分类一定更好"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "跨序列到序列任务强。",
+    "professor_commentary": "架构要对题。",
+    "topic": "tasks",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-078",
+    "type": "multi",
+    "stem": "数据清洗重点：",
+    "options": [
+      "去重/去毒",
+      "语言/格式统一",
+      "引入噪声",
+      "过滤异常样本"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "垃圾进垃圾出。",
+    "professor_commentary": "先把水净化。",
+    "topic": "data",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-079",
+    "type": "multi",
+    "stem": "指令数据好实践：",
+    "options": [
+      "多领域多任务",
+      "单一风格",
+      "质量优于数量",
+      "明确奖励/拒答边界"
+    ],
+    "answer": [
+      0,
+      2,
+      3
+    ],
+    "explain": "多样但不杂乱。",
+    "professor_commentary": "有尺有度。",
+    "topic": "alignment",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-080",
+    "type": "multi",
+    "stem": "评测‘泄题’控制：",
+    "options": [
+      "严格数据隔离",
+      "把公开基准放训练里",
+      "用私有测试集",
+      "交叉基准核验"
+    ],
+    "answer": [
+      0,
+      2,
+      3
+    ],
+    "explain": "防止信息泄漏。",
+    "professor_commentary": "考场要公平。",
+    "topic": "evaluation",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-081",
+    "type": "multi",
+    "stem": "数值稳定技巧：",
+    "options": [
+      "softmax 前减最大值",
+      "log-sum-exp",
+      "mask 加 -inf",
+      "先 softmax 再 mask"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "最后一项是反例。",
+    "professor_commentary": "数学护城河。",
+    "topic": "numerics",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-082",
+    "type": "multi",
+    "stem": "长序列高效路线：",
+    "options": [
+      "稀疏注意力",
+      "线性/核近似",
+      "分块递归",
+      "更大词表"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "结构胜过堆词表。",
+    "professor_commentary": "有选择地看。",
+    "topic": "efficient-attention",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-083",
+    "type": "multi",
+    "stem": "提升指令遵循：",
+    "options": [
+      "高质量 SFT",
+      "清晰系统提示/工具约束",
+      "只提高温度",
+      "格式化示例"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "温度不是药方。",
+    "professor_commentary": "规则先行。",
+    "topic": "alignment",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-084",
+    "type": "multi",
+    "stem": "KV Cache 说法：",
+    "options": [
+      "减少重复计算",
+      "逐步追加 K/V",
+      "会改变训练损失",
+      "首 token 无加速"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "缓存只影响推理。",
+    "professor_commentary": "别混训练阶段。",
+    "topic": "inference",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-085",
+    "type": "multi",
+    "stem": "减少幻觉：",
+    "options": [
+      "检索与引用",
+      "明确拒答策略",
+      "温度/Top-p 一味升高",
+      "事实后验校验"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "证据链最关键。",
+    "professor_commentary": "不知则不语。",
+    "topic": "factuality",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-086",
+    "type": "multi",
+    "stem": "数据清洗与去重：",
+    "options": [
+      "文本规范化",
+      "哈希/指纹去重",
+      "全保低质网页",
+      "过滤脚本注入噪声"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "保质丢糟粕。",
+    "professor_commentary": "净化语料。",
+    "topic": "data",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-087",
+    "type": "multi",
+    "stem": "分布式训练：",
+    "options": [
+      "DP 复制模型切分数据",
+      "TP 切权重/激活",
+      "PP 切层",
+      "三者可组合"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "组合拳灵活。",
+    "professor_commentary": "会切就会并。",
+    "topic": "distributed",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-088",
+    "type": "multi",
+    "stem": "生成质量评测：",
+    "options": [
+      "任务指标",
+      "人类偏好 A/B",
+      "仅看 PPL",
+      "引用可验证"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "主客观结合。",
+    "professor_commentary": "多把尺子。",
+    "topic": "evaluation",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-089",
+    "type": "multi",
+    "stem": "Tokenizer 与特殊符号：",
+    "options": [
+      "BOS/EOS/PAD 要一致",
+      "清洗勿破坏分词边界",
+      "更换不影响嵌入",
+      "多语统一正则"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "映射和规范都重要。",
+    "professor_commentary": "先立规矩。",
+    "topic": "tokenization",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-090",
+    "type": "multi",
+    "stem": "训练稳定性：",
+    "options": [
+      "分层 LR/权重衰减",
+      "梯度裁剪",
+      "超大 batch 不调参",
+      "合理 warmup/调度"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "策略组合更稳。",
+    "professor_commentary": "把弦调准。",
+    "topic": "stability",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-091",
+    "type": "multi",
+    "stem": "RAG 检索优化：",
+    "options": [
+      "向量检索",
+      "BM25",
+      "多路检索重排",
+      "强制只用一个文档"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "广度+精度。",
+    "professor_commentary": "多通道更稳。",
+    "topic": "rag",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-092",
+    "type": "multi",
+    "stem": "提示模板设计：",
+    "options": [
+      "清晰 I/O 与格式",
+      "反例纠偏",
+      "未定义工具也调用",
+      "安全限制/拒答原则"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "明规则，少走弯路。",
+    "professor_commentary": "边界先画。",
+    "topic": "prompting",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-093",
+    "type": "multi",
+    "stem": "多任务采样：",
+    "options": [
+      "均衡/温度采样",
+      "多语言/多领域混合",
+      "仅英文",
+      "防分布塌缩"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "覆盖广且稳。",
+    "professor_commentary": "别偏科。",
+    "topic": "data",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-094",
+    "type": "multi",
+    "stem": "推理吞吐优化：",
+    "options": [
+      "请求合批",
+      "流式输出",
+      "并行解码",
+      "频繁 CPU↔GPU 往返"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "减少无谓拷贝。",
+    "professor_commentary": "总线别堵。",
+    "topic": "inference",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-095",
+    "type": "multi",
+    "stem": "越权防控：",
+    "options": [
+      "工具白名单",
+      "结果回显限制",
+      "秘密工具模型不可见",
+      "请求审计与日志"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "可控可审计。",
+    "professor_commentary": "合规先行。",
+    "topic": "safety",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-096",
+    "type": "multi",
+    "stem": "时间穿越问题：",
+    "options": [
+      "验证/测试晚于训练",
+      "样本时间戳",
+      "混用所有年份",
+      "按时间切分"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "防止泄漏。",
+    "professor_commentary": "把时间轴理顺。",
+    "topic": "evaluation",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-097",
+    "type": "multi",
+    "stem": "软提示（prefix/p-tuning）：",
+    "options": [
+      "冻结主干训少量前缀",
+      "小样本适配",
+      "需全参更新",
+      "可与 LoRA 结合"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "轻量高效。",
+    "professor_commentary": "钱要花在刀口。",
+    "topic": "peft",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-098",
+    "type": "multi",
+    "stem": "事实性问答评测：",
+    "options": [
+      "带引用的自动评测",
+      "引入‘无法回答’",
+      "只看长度",
+      "检索增强评测环境"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "可证与可不答都重要。",
+    "professor_commentary": "求真。",
+    "topic": "factuality",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-099",
+    "type": "multi",
+    "stem": "复杂指令执行评测：",
+    "options": [
+      "步骤/工具序列对齐",
+      "仅 PPL",
+      "最终成功率",
+      "中间状态可解释"
+    ],
+    "answer": [
+      0,
+      2,
+      3
+    ],
+    "explain": "过程+结果兼顾。",
+    "professor_commentary": "别只看表面。",
+    "topic": "evaluation",
+    "difficulty": "med"
+  },
+  {
+    "id": "q-100",
+    "type": "multi",
+    "stem": "部署/运维排障要点：",
+    "options": [
+      "保存最小可复现输入",
+      "记录模型/解码配置 hash",
+      "关闭日志提升性能",
+      "记录检索命中文档与版本"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explain": "证据链完整好追溯。",
+    "professor_commentary": "科学方法：可复现。",
+    "topic": "ops",
+    "difficulty": "med"
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "banks": [
+    {
+      "key": "xgboost_basic_100",
+      "title": "XGBoost 基础 100 题",
+      "path": "banks/xgboost_basic_100.json",
+      "format": "xgb-basic-v1"
+    },
+    {
+      "key": "python_basic_100",
+      "title": "Python 基础 100 题",
+      "path": "banks/python_basic_100.json",
+      "format": "xgb-basic-v1"
+    },
+    {
+      "key": "transformer_basic_100",
+      "title": "Transformer 基础 100 题",
+      "path": "banks/transformer_basic_100.json",
+      "format": "xgb-basic-v1"
+    },
+    {
+      "key": "linalg_calculus_ml_100",
+      "title": "线性代数·微积分·机器学习 100 题",
+      "path": "banks/linalg_calculus_ml_100.json",
+      "format": "xgb-basic-v1"
+    },
+    {
+      "key": "ml_basic_100",
+      "title": "机器学习基础 100 题",
+      "path": "banks/ml_basic_100.json",
+      "format": "xgb-basic-v1"
+    }
+  ]
+}

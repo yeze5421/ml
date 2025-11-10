@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>一键刷题 · 题库选择器（静态版）</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; margin: 0; background:#fff; color:#111;}
+    .container { max-width: 980px; margin: 0 auto; padding: 16px; }
+    .header { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .title { font-weight: 800; font-size: 22px; }
+    .card { border: 1px solid #eee; border-radius: 14px; padding: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); background:#fff; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:12px; }
+    .muted { color:#666; font-size: 12px; }
+    .row { display:flex; gap:8px; align-items:center; flex-wrap: wrap; }
+    button, input, select, textarea { font: inherit; }
+    button { border-radius:10px; padding:8px 12px; border:1px solid #ddd; background:#111; color:#fff; cursor:pointer; }
+    button.secondary { background:#f6f6f6; color:#111; }
+    button.link { background: transparent; border: none; color: #05f; cursor: pointer; padding: 0; }
+    .badge { display:inline-flex; align-items:center; gap:6px; padding:4px 8px; border-radius:999px; background:#f6f6f6; font-size:12px; color:#333; border:1px solid #eee;}
+    .field { display:flex; gap:8px; }
+    .field input[type='text'] { flex: 1; padding:8px 10px; border:1px solid #ddd; border-radius:10px; }
+    .qcard { border:1px solid #eee; border-radius:14px; padding:14px; }
+    .option { display:block; width:100%; text-align:left; padding:10px; border:1px solid #e5e5e5; border-radius:10px; margin:6px 0; background:#fff; color:#111; }
+    .option.selected { background:#f8f8f8; border-color:#bbb; }
+    .option.correct { background:#eaffea; border-color:#3c9f3c; }
+    .option.wrong { background:#ffecec; border-color:#cf3a3a; }
+    .pill { display:inline-block; font-size:12px; padding:3px 8px; border-radius:999px; border:1px solid #eee; background:#fafafa; }
+    .footer { color:#888; margin-top: 20px; font-size: 12px; }
+    .progress { height:8px; border:1px solid #eee; border-radius:999px; overflow:hidden; }
+    .progress > div { height:100%; background:#111; }
+    .kbd { font-size: 12px; padding: 1px 6px; border:1px solid #ddd; border-radius:6px; background:#fafafa; }
+    .hint { background:#fafafa; border:1px dashed #ddd; border-radius:10px; padding:10px; }
+    .hidden { display:none; }
+    @media (prefers-color-scheme: dark) {
+      body { background:#0b0b0b; color:#f2f2f2; }
+      .card, .qcard { background:#111; border-color:#222; }
+      .option { background:#0b0b0b; border-color:#222; color:#eee; }
+      .option.selected { background:#111; border-color:#444; }
+      .option.correct { background:#0f2410; border-color:#0e8a0e;}
+      .option.wrong { background:#2a0f0f; border-color:#aa2f2f;}
+      .badge { background:#161616; border-color:#222; color:#ddd; }
+      .pill { background:#141414; border-color:#222; }
+      .progress { border-color:#222; }
+      .progress > div { background:#f2f2f2; }
+      button.secondary { background:#161616; color:#eee; border-color:#222; }
+      .hint { background:#121212; border-color:#222; }
+      .field input[type='text'] { background:#0b0b0b; color:#eee; border-color:#222; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="title">一键刷题 · 题库选择器（静态版）</div>
+      <div class="row">
+        <button class="secondary" onclick="location.href='?'">首页</button>
+      </div>
+    </div>
+
+    <div id="home" class="space-y">
+      <div class="card">
+        <div style="font-weight:700; margin-bottom:10px;">已内置题库（点击即开刷）</div>
+        <div id="bankList" class="grid"></div>
+
+        <div style="height:1px; background:#eee; margin:14px 0;"></div>
+
+        <div class="row">
+          <div style="font-weight:700;">通过 URL 导入</div>
+        </div>
+        <div class="field" style="margin-top:6px;">
+          <input type="text" id="urlInput" placeholder="https://.../your-bank.json">
+          <button onclick="openUrlBank()">打开</button>
+        </div>
+        <div class="muted">支持 ?url= 直链参数（例如 <span class="kbd">index.html?url=直链</span>）。</div>
+
+        <div style="height:1px; background:#eee; margin:14px 0;"></div>
+
+        <div class="row">
+          <div style="font-weight:700;">导入本地 JSON 文件</div>
+          <input type="file" id="fileInput" accept=".json" />
+          <button class="secondary" onclick="importLocal()">导入并开始</button>
+        </div>
+
+        <div class="hint" style="margin-top:12px;">
+          小技巧：
+          <span class="kbd">1~6</span> 选择，<span class="kbd">N/P</span> 切题，
+          简答 <span class="kbd">Ctrl/⌘ + Enter</span> 提交。进度自动保存在本地。
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="historyCard" style="margin-top:12px;">
+      <div style="font-weight:700; margin-bottom:10px;">历史记录</div>
+      <div class="muted" id="historyEmpty">还没有历史记录。点击“开刷”完成后退出即可自动保存。</div>
+      <div id="historyList" class="grid"></div>
+    </div>
+
+    <div id="runner" class="hidden">
+      <div class="card">
+        <div class="row" style="justify-content:space-between; margin-bottom:8px;">
+          <div class="row">
+            <span id="bankTitle" style="font-weight:700;"></span>
+            <span class="badge" id="qCount"></span>
+            <span class="badge" id="progressBadge"></span>
+            <span class="badge" id="correctBadge"></span>
+          </div>
+          <div class="row">
+            <button class="secondary" onclick="resetProgress()">重置进度</button><button class="secondary" onclick="resample()">换一套20题</button>
+            <button onclick="exitRunner()">退出</button>
+          </div>
+        </div>
+        <div class="progress" style="margin-bottom:10px;"><div id="progressBar" style="width:0%"></div></div>
+        <div id="qPanel" class="qcard"></div>
+        <div style="margin-top:10px;" class="row">
+          <button class="secondary" id="prevBtn">上一题</button>
+          <button id="submitBtn">提交</button>
+          <button class="secondary" id="nextBtn">下一题</button>
+        </div>
+        <div id="jumpPanel" style="margin-top:10px; display:grid; grid-template-columns: repeat(12, 1fr); gap:6px;"></div>
+      </div>
+      <div class="footer">
+        静态单页 · 支持单/多选与简答 · 本地保存进度
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- Utilities ---
+    const $ = (sel) => document.querySelector(sel);
+    const $el = (tag, props={}, ...children) => {
+      const n = document.createElement(tag);
+      Object.assign(n, props);
+      for (const c of children) n.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+      return n;
+    };
+    const qs = new URLSearchParams(location.search);
+    function save(k, v) { localStorage.setItem(k, JSON.stringify(v)); }
+    function load(k, d=null) { try { return JSON.parse(localStorage.getItem(k) || 'null') ?? d; } catch { return d; } }
+    function norm(s) { return (s ?? '').toString().trim().toLowerCase(); }
+
+    // --- Bank registry ---
+    const manifestUrl = "banks.json";
+    let registry = []; // {key, title, path, format}
+
+    async function loadRegistry() {
+      try {
+        const res = await fetch(manifestUrl);
+        if (!res.ok) throw new Error(res.status);
+        const data = await res.json();
+        registry = data.banks || [];
+      } catch (e) {
+        registry = [];
+      }
+    }
+
+    function renderHome() {
+      const cont = $("#bankList");
+      cont.innerHTML = "";
+      if (registry.length === 0) {
+        cont.appendChild($el("div", {className:"muted"}, "暂无内置题库。将 JSON 放至 banks/ 并编辑 banks.json 即可。"));
+      }
+      for (const b of registry) {
+        const card = $el("div", { className:"card" },
+          $el("div", { style:"font-weight:700; margin-bottom:6px;" }, b.title),
+          $el("div", { className:"muted" }, b.path),
+          $el("div", { className:"row", style:"margin-top:8px;" },
+            $el("button", { onclick: () => startBank({type:'builtin', bank: b}) }, "开刷"),
+            $el("button", { className:"secondary", onclick: () => copyLink(`?bank=${encodeURIComponent(b.key)}`) }, "复制直达链接")
+          )
+        );
+        cont.appendChild(card);
+      }
+    }
+
+    async function openUrlBank() {
+      const url = $("#urlInput").value.trim();
+      if (!url) return;
+      startBank({ type:'url', url });
+    }
+
+    async function importLocal() {
+      const fi = $("#fileInput");
+      if (!fi.files || !fi.files[0]) return alert("请选择一个 JSON 文件");
+      const file = fi.files[0];
+      const text = await file.text();
+      let data;
+      try { data = JSON.parse(text); } catch (e) { return alert("JSON 解析失败"); }
+      startBank({ type: 'local', name: file.name, data });
+    }
+
+    function copyLink(suffix) {
+      const url = new URL(location.href);
+      url.search = suffix.startsWith("?") ? suffix.slice(1) : suffix;
+      navigator.clipboard.writeText(url.toString());
+      alert("已复制直达链接：\\n" + url.toString());
+    }
+
+    // --- Bank loading + adapters ---
+    async function fetchJson(u) {
+      const ctrl = new AbortController();
+      const id = setTimeout(() => ctrl.abort(), 12000);
+      try {
+        const r = await fetch(u, { signal: ctrl.signal });
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return await r.json();
+      } finally { clearTimeout(id); }
+    }
+
+    function adaptXgbBasic(json) {
+      // Input: array of question objects or an object with array
+      const arr = Array.isArray(json) ? json : (Array.isArray(json.questions) ? json.questions : []);
+      const questions = arr.map((q, idx) => {
+        const type = q.type === "multi" ? "multiple" : (q.type === "single" ? "single" : (q.type === "short" ? "short" : "single"));
+        const opts = Array.isArray(q.options) ? q.options.map((t, i) => ({ id: String.fromCharCode(65+i), text: String(t) })) : undefined;
+        const ans = (q.answer != null) ? (Array.isArray(q.answer) ? q.answer : [q.answer]) : [];
+        let ansIds = [];
+        if (opts && ans.length) {
+          ansIds = ans.map(i => {
+            const idx = typeof i === 'number' ? i : parseInt(i, 10);
+            return String.fromCharCode(65 + (isNaN(idx) ? 0 : idx));
+          });
+        } else if (type === "short") {
+          ansIds = Array.isArray(q.answer) ? q.answer.map(String) : [String(q.answer ?? "")];
+        }
+        return {
+          id: q.id || ("q" + (idx+1)),
+          type,
+          stem: q.stem || q.question || "",
+          choices: opts,
+          answer: type === "short" ? ansIds : ansIds, // for short, array of acceptable strings
+          explanation: q.explain || q.explanation || "",
+          raw: q
+        };
+      });
+      return { title: "XGBoost 基础 100 题", questions };
+    }
+
+    function detectAndAdapt(json, explicitFormat) {
+      const fmt = explicitFormat || "xgb-basic-v1";
+      switch(fmt) {
+        case "xgb-basic-v1":
+        default:
+          return adaptXgbBasic(json);
+      }
+    }
+
+    // --- State ---
+    const PER_SESSION_COUNT = 20; // 每次刷题从该题库随机抽取 20 题
+    const HISTORY_KEY = 'qb-history-v1';
+    function loadHistory(){ try{return JSON.parse(localStorage.getItem(HISTORY_KEY)||'[]')}catch(e){return []} }
+    function saveHistory(hist){ localStorage.setItem(HISTORY_KEY, JSON.stringify(hist)); }
+
+    let current = null; // { title, questions }
+    let idx = 0;
+    let answers = {};
+    let storageKey = null;
+
+    function setProgressBadges() {
+      const total = current.questions.length;
+      let done = 0, correct = 0;
+      for (const q of current.questions) {
+        const a = answers[q.id];
+        if (!a) continue;
+        if (q.type === 'short') {
+          if ((a||"").toString().trim()) { done++; if (isCorrect(q, a)) correct++; }
+        } else if (q.type === 'single') {
+          if (typeof a === 'string' && a) { done++; if (isCorrect(q, a)) correct++; }
+        } else if (q.type === 'multiple') {
+          if (Array.isArray(a) && a.length) { done++; if (isCorrect(q, a)) correct++; }
+        }
+      }
+      $("#progressBadge").textContent = "已作答 " + done;
+      $("#correctBadge").textContent = "正确 " + correct;
+      $("#qCount").textContent = "题数 " + total;
+      $("#progressBar").style.width = total ? ((done/total)*100).toFixed(1) + "%" : "0%";
+      renderJump(done);
+    }
+
+    function isCorrect(q, user) {
+      if (q.type === 'short') {
+        const acc = Array.isArray(q.answer) ? q.answer.map(norm) : [norm(q.answer ?? "")];
+        return acc.includes(norm(user ?? ""));
+      }
+      const truth = (q.answer || []).slice().sort().join("");
+      const u = (Array.isArray(user) ? user : [user]).filter(Boolean).slice().sort().join("");
+      return truth === u;
+    }
+
+    function renderJump(done) {
+      const j = $("#jumpPanel");
+      j.innerHTML = "";
+      current.questions.forEach((q, i) => {
+        const u = answers[q.id];
+        let solved = false, ok = false;
+        if (q.type === 'short') { if ((u||"").toString().trim()) { solved = true; ok = isCorrect(q, u); } }
+        if (q.type === 'single') { if (typeof u === 'string' && u) { solved = true; ok = isCorrect(q, u); } }
+        if (q.type === 'multiple') { if (Array.isArray(u) && u.length) { solved = true; ok = isCorrect(q, u); } }
+        const btn = $el("button", {
+          className: "secondary",
+          style: "padding:6px; border-radius:8px; border:1px solid #ddd; " + (i===idx? "border-color:#111;" : "") + (solved ? (ok ? "background:#eaffea;" : "background:#ffecec;") : ""),
+          onclick: () => { idx = i; renderQuestion(); }
+        }, String(i+1));
+        j.appendChild(btn);
+      });
+    }
+
+    function renderQuestion() {
+      const panel = $("#qPanel");
+      const q = current.questions[idx];
+      panel.innerHTML = "";
+      if (!q) { panel.textContent = "没有更多题目。"; return; }
+
+      $("#bankTitle").textContent = current.title + `（第 ${idx+1}/${current.questions.length} 题）`;
+
+      const head = $el("div", { className:"row", style:"justify-content:space-between; margin-bottom:8px;" },
+        $el("div", { style:"font-weight:700; font-size:16px;" }, q.stem),
+        $el("div", {}, $el("span", { className:"pill" }, q.type === 'single' ? '单选' : q.type === 'multiple' ? '多选' : '简答'))
+      );
+      panel.appendChild(head);
+
+      if (q.type !== 'short' && q.choices) {
+        q.choices.forEach((c, i) => {
+          const selected = q.type === 'single' ? answers[q.id] === c.id : (Array.isArray(answers[q.id]) && answers[q.id].includes(c.id));
+          const btn = $el("button", {
+            className: "option" + (selected ? " selected" : ""),
+            onclick: () => {
+              if (q.type === 'single') {
+                answers[q.id] = c.id;
+              } else {
+                const prev = Array.isArray(answers[q.id]) ? answers[q.id] : [];
+                const has = prev.includes(c.id);
+                answers[q.id] = has ? prev.filter(x => x!==c.id) : [...prev, c.id];
+              }
+              persist();
+              renderQuestion();
+            }
+          }, `${String.fromCharCode(65+i)}. ${c.text}`);
+          panel.appendChild(btn);
+        });
+      } else if (q.type === 'short') {
+        const ta = $el("textarea", {
+          style: "width:100%; min-height:100px; padding:10px; border:1px solid #ddd; border-radius:10px;",
+          placeholder: "输入你的答案（Ctrl/⌘ + Enter 提交）",
+          value: typeof answers[q.id] === 'string' ? answers[q.id] : ""
+        });
+        ta.addEventListener("input", (e) => {
+          answers[q.id] = ta.value;
+          persist();
+        });
+        ta.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) checkAndReveal();
+        });
+        panel.appendChild(ta);
+      }
+
+      // Explanation area
+      const explain = $el("div", { id:"explain", className:"hint", style:"margin-top:8px; display:none;" });
+      panel.appendChild(explain);
+
+      // Buttons
+      $("#prevBtn").disabled = idx <= 0;
+      $("#nextBtn").disabled = idx >= current.questions.length - 1;
+      $("#prevBtn").onclick = () => { idx = Math.max(0, idx-1); renderQuestion(); };
+      $("#nextBtn").onclick = () => { idx = Math.min(current.questions.length-1, idx+1); renderQuestion(); };
+      $("#submitBtn").onclick = () => { checkAndReveal(); };
+
+      function checkAndReveal() {
+        let ok = isCorrect(q, answers[q.id]);
+        // Mark options
+        if (q.type !== 'short' && q.choices) {
+          const nodes = panel.querySelectorAll(".option");
+          const truth = (q.answer || []);
+          nodes.forEach((node, i) => {
+            const id = String.fromCharCode(65+i);
+            if (truth.includes(id)) node.classList.add("correct");
+            const selected = q.type === 'single' ? answers[q.id] === id : (Array.isArray(answers[q.id]) && answers[q.id].includes(id));
+            if (selected && !truth.includes(id)) node.classList.add("wrong");
+          });
+        }
+        // Explain
+        explain.style.display = "block";
+        explain.innerHTML = "<div style='font-weight:700; margin-bottom:6px;'>参考解析</div>" +
+          (q.type !== 'short' && q.choices ? ("<div>正确选项：" + ((q.answer||[]).join(", ") || "（未标注）") + "</div>") :
+           (q.type === 'short' ? ("<div>参考答案：" + ((Array.isArray(q.answer)? q.answer.join(' / ') : (q.answer||''))) + "</div>") : "")) +
+          "<div style='margin-top:6px;'>" + (q.explanation || "——") + "</div>";
+        setProgressBadges();
+      }
+
+      setProgressBadges();
+    }
+
+    function persist() {
+      if (!storageKey) return;
+      save(storageKey, { answers });
+    }
+
+    
+    function exitRunner() {
+      // Save session snapshot to history
+      try {
+        if (current) {
+          const snapshot = { time: Date.now(), title: current.title, total: current.questions.length, correct: 0, items: [] };
+          for (const q of current.questions) {
+            // gather choices
+            const choices = (q.choices || []).map((c, i) => ({ id: String.fromCharCode(65+i), text: c.text }));
+            const corr = (q.answer || []);
+            const user = answers[q.id];
+            const userIds = Array.isArray(user) ? user : (user ? [user] : []);
+            // correctness
+            const truth = corr.slice().sort().join("");
+            const ujoin = userIds.slice().sort().join("");
+            const ok = (q.type === 'short') ? false : (truth === ujoin);
+            if (ok) snapshot.correct++;
+            snapshot.items.push({
+              id: q.id,
+              type: q.type,
+              stem: q.stem,
+              choices: choices,
+              correct_ids: corr,
+              user_ids: userIds,
+              user_text: (q.type==='short' ? (user||'') : undefined),
+              answer_text: (q.type==='short' ? (Array.isArray(q.answer)? q.answer : [q.answer]) : undefined),
+              explanation: q.explanation || ''
+            });
+          }
+          const hist = loadHistory();
+          hist.push(snapshot);
+          saveHistory(hist);
+        }
+      } catch (e) { /* ignore */ }
+
+      $("#runner").classList.add("hidden");
+      $("#home").classList.remove("hidden");
+      history.replaceState({}, "", location.pathname);
+      // refresh history view
+      renderHistory();
+    }
+
+
+    
+    function resample() {
+      if (!current) return;
+      // 重新从完整题库加载并抽样
+      const params = new URLSearchParams(location.search);
+      const bankKey = params.get("bank");
+      const urlBank = params.get("url");
+      // 简化：如果是内置 bank，重新 fetch 一遍；URL 同理；本地导入不支持重新拉取
+      if (bankKey) {
+        const found = registry.find(b => b.key === bankKey);
+        if (found) {
+          fetchJson(found.path).then(json => {
+            const full = detectAndAdapt(json, found.format);
+            current = pickSessionQuestions(full);
+            idx = 0; answers = {}; persist(); renderQuestion();
+          });
+        }
+      } else if (urlBank) {
+        fetchJson(urlBank).then(json => {
+          const full = detectAndAdapt(json);
+          current = pickSessionQuestions(full);
+          idx = 0; answers = {}; persist(); renderQuestion();
+        });
+      } else {
+        alert("本地导入的题库暂不支持在线重抽样，请重新导入一次文件。");
+      }
+    }
+
+    function resetProgress() {
+
+      if (!current || !storageKey) return;
+      answers = {};
+      save(storageKey, { answers });
+      renderQuestion();
+    }
+
+    
+    function pickSessionQuestions(full) {
+      const arr = full.questions.slice();
+      // Fisher-Yates shuffle
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      const chosen = arr.slice(0, Math.min(PER_SESSION_COUNT, arr.length));
+      return { title: full.title, questions: chosen };
+    }
+
+    
+    function renderHistory(){
+      const hist = loadHistory();
+      const list = $("#historyList");
+      const empty = $("#historyEmpty");
+      list.innerHTML = "";
+      if (!hist.length) { empty.style.display = "block"; return; }
+      empty.style.display = "none";
+      for (let i=hist.length-1; i>=0; i--) {
+        const h = hist[i];
+        const head = $el("div", { className:"row", style:"justify-content:space-between; margin-bottom:6px;" },
+          $el("div", {}, `${h.title} · 分数 ${h.correct}/${h.total}`),
+          $el("div", { className:"muted" }, new Date(h.time).toLocaleString())
+        );
+        const detail = $el("div", { });
+        h.items.forEach((it, idx) => {
+          const wrap = $el("div", { className:"qcard", style:"margin:6px 0;" },
+            $el("div", { className:"row", style:"justify-content:space-between; margin-bottom:6px;" },
+              $el("div", { style:"font-weight:700;" }, `${idx+1}. ${it.stem}`),
+              $el("span", { className:"pill" }, it.type)
+            ),
+            $el("div", {}, ...it.choices.map((c, ci) => {
+              const isCorrect = it.correct_ids.includes(c.id);
+              const isUser = (Array.isArray(it.user_ids) ? it.user_ids : [it.user_ids]).includes(c.id);
+              const cls = "option" + (isCorrect ? " correct" : isUser && !isCorrect ? " wrong" : "");
+              return $el("div", { className: cls, style:"cursor:default;" }, `${c.id}. ${c.text}`);
+            })),
+            (it.type === 'short' ? $el("div", { className:"muted", style:"margin-top:6px;" }, "你的答案： " + (it.user_text||"")) : document.createTextNode("")),
+            (it.type === 'short' ? $el("div", { className:"muted" }, "参考答案： " + (Array.isArray(it.answer_text)? it.answer_text.join(' / ') : (it.answer_text||''))) : document.createTextNode("")),
+            $el("div", { className:"muted", style:"margin-top:6px;" }, "解析： " + (it.explanation||"—"))
+          );
+          detail.appendChild(wrap);
+        });
+        const card = $el("div", { className:"card" }, head, detail);
+        list.appendChild(card);
+      }
+    }
+
+    async function startBank(spec) {
+      // Ensure only one bank selected at a time: starting a bank hides home and loads that bank only
+      $("#home").classList.add("hidden");
+      $("#runner").classList.remove("hidden");
+      try {
+        let bankData = null;
+        if (spec.type === 'builtin') {
+          const u = spec.bank.path;
+          const json = await fetchJson(u);
+          bankData = detectAndAdapt(json, spec.bank.format);
+          bankData.title = spec.bank.title || bankData.title;
+          history.replaceState({}, "", `?bank=${encodeURIComponent(spec.bank.key)}`);
+          storageKey = `qb-${spec.bank.key}`;
+        } else if (spec.type === 'url') {
+          const json = await fetchJson(spec.url);
+          bankData = detectAndAdapt(json);
+          history.replaceState({}, "", `?url=${encodeURIComponent(spec.url)}`);
+          storageKey = `qb-${btoa(spec.url).slice(0,24)}`;
+        } else if (spec.type === 'local') {
+          bankData = detectAndAdapt(spec.data);
+          history.replaceState({}, "", ``); // local file won't be serializable as URL
+          storageKey = `qb-local-${Date.now()}`;
+        }
+        current = pickSessionQuestions(bankData);
+        idx = 0;
+        answers = (load(storageKey) || {}).answers || {};
+        renderQuestion();
+      } catch (e) {
+        alert("加载题库失败：" + e.message);
+        exitRunner();
+      }
+    }
+
+    // Keyboard shortcuts
+    document.addEventListener("keydown", (e) => {
+      if ($("#runner").classList.contains("hidden")) return;
+      if (!current) return;
+      const q = current.questions[idx];
+      if (!q) return;
+      const map = { "1":"A", "2":"B", "3":"C", "4":"D", "5":"E", "6":"F" };
+      if (map[e.key]) {
+        e.preventDefault();
+        const id = map[e.key];
+        if (q.type === 'single') answers[q.id] = id;
+        if (q.type === 'multiple') {
+          const prev = Array.isArray(answers[q.id]) ? answers[q.id] : [];
+          answers[q.id] = prev.includes(id) ? prev.filter(x => x!==id) : [...prev, id];
+        }
+        persist(); renderQuestion();
+      }
+      if (e.key.toLowerCase() === "n") { e.preventDefault(); $("#nextBtn").click(); }
+      if (e.key.toLowerCase() === "p") { e.preventDefault(); $("#prevBtn").click(); }
+      if (e.key === "Enter" && (e.metaKey || e.ctrlKey) && q.type === 'short') { e.preventDefault(); $("#submitBtn").click(); }
+    });
+
+    // Boot
+    (async function() {
+      await loadRegistry();
+      renderHome(); renderHistory();
+      // Query params: bank or url
+      const qBank = qs.get("bank");
+      const qUrl = qs.get("url");
+      if (qBank) {
+        const found = registry.find(b => b.key === qBank);
+        if (found) startBank({ type:'builtin', bank: found });
+      } else if (qUrl) {
+        startBank({ type:'url', url: qUrl });
+      }
+    })();
+  </script>
+</body>
+</html>

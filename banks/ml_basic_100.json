@@ -1,0 +1,1484 @@
+[
+  {
+    "id": "ml-001",
+    "type": "single",
+    "stem": "监督学习的目标是？",
+    "options": [
+      "发现数据的隐藏结构",
+      "预测带标签目标",
+      "生成新样本",
+      "降维可视化"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "监督学习用带标签数据学习 X→y 的映射。",
+    "professor_commentary": "先把‘有答案的题’做熟。",
+    "topic": "basics",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-002",
+    "type": "single",
+    "stem": "回归任务的输出通常是？",
+    "options": [
+      "类别标签",
+      "连续数值",
+      "聚类簇标识",
+      "概率分布"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "回归预测实数，如房价。",
+    "professor_commentary": "数轴上的位置比‘类别名’更挑剔。",
+    "topic": "basics",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-003",
+    "type": "single",
+    "stem": "分类任务典型评估指标不包括？",
+    "options": [
+      "准确率",
+      "ROC‑AUC",
+      "均方误差 MSE",
+      "F1"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "MSE 多用于回归；分类常用准确率、AUC、F1 等。",
+    "professor_commentary": "别拿温度计称体重。",
+    "topic": "metrics",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-004",
+    "type": "single",
+    "stem": "过拟合的典型表现？",
+    "options": [
+      "训练好验证差",
+      "训练差验证好",
+      "两者都差",
+      "都好"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "模型记住训练集细节，泛化差。",
+    "professor_commentary": "考试不要只背答案。",
+    "topic": "generalization",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-005",
+    "type": "single",
+    "stem": "欠拟合的典型原因？",
+    "options": [
+      "模型太简单或训练不足",
+      "数据泄漏",
+      "特征泄漏",
+      "阈值选错"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "容量不足、特征弱或训练步数不够。",
+    "professor_commentary": "刀太钝，肉再新也切不动。",
+    "topic": "generalization",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-006",
+    "type": "single",
+    "stem": "训练/验证/测试三者正确用途？",
+    "options": [
+      "验证用于最终报告",
+      "测试用于调参",
+      "训练+验证调参，测试仅一次评估",
+      "训练=测试"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "测试集最后一次使用，避免泄漏。",
+    "professor_commentary": "留一手给科学。",
+    "topic": "evaluation",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-007",
+    "type": "single",
+    "stem": "k 折交叉验证的作用？",
+    "options": [
+      "降低评估方差",
+      "替代训练",
+      "扩大数据规模",
+      "只适用于回归"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "多折平均更稳健，特别在数据有限时。",
+    "professor_commentary": "换角度看同一幅画。",
+    "topic": "evaluation",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ml-008",
+    "type": "single",
+    "stem": "标准化（z‑score）的目的？",
+    "options": [
+      "提高维度",
+      "让均值0方差1，利于优化",
+      "降类别数",
+      "增加样本"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "特征尺度统一，便于许多模型/优化。",
+    "professor_commentary": "先把尺子定好。",
+    "topic": "preprocess",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ml-009",
+    "type": "single",
+    "stem": "正则化的核心作用？",
+    "options": [
+      "加速推理",
+      "控制模型复杂度防过拟合",
+      "升维",
+      "增加样本"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "L1/L2 等对系数惩罚可抑制过拟合。",
+    "professor_commentary": "拉一拉，别让系数长成藤。",
+    "topic": "regularization",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-010",
+    "type": "single",
+    "stem": "L1 正则的一个特点？",
+    "options": [
+      "鼓励稀疏，特征选择",
+      "只缩小不置零",
+      "与 L2 完全相同",
+      "只用于分类"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "L1 促使部分权重变 0。",
+    "professor_commentary": "会扔包袱的模型走得更远。",
+    "topic": "regularization",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ml-011",
+    "type": "single",
+    "stem": "线性回归最小化的目标？",
+    "options": [
+      "绝对误差",
+      "平方误差",
+      "交叉熵",
+      "KL 散度"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "最小二乘即最小化 MSE。",
+    "professor_commentary": "平方放大大错，老师爱它。",
+    "topic": "linear-regression",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-012",
+    "type": "single",
+    "stem": "逻辑回归用于？",
+    "options": [
+      "回归数值",
+      "二/多分类概率估计",
+      "聚类",
+      "降维"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "通过 sigmoid/softmax 输出概率。",
+    "professor_commentary": "名字里有回归，心里装着分类。",
+    "topic": "logistic-regression",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-013",
+    "type": "single",
+    "stem": "ROC‑AUC 的不变性？",
+    "options": [
+      "对阈值选择不变",
+      "对类别比例不变",
+      "对排序不变",
+      "对校准不变"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "ROC‑AUC 衡量排序，与具体阈值无关。",
+    "professor_commentary": "先会排队，再谈录取线。",
+    "topic": "metrics",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-014",
+    "type": "single",
+    "stem": "PR‑AUC 更适用于？",
+    "options": [
+      "类别均衡",
+      "严重不平衡",
+      "仅回归",
+      "仅多分类"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "正负极不均衡时 PR 曲线更敏感。",
+    "professor_commentary": "人少那边要用更灵的尺。",
+    "topic": "metrics",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-015",
+    "type": "single",
+    "stem": "kNN 的关键超参数？",
+    "options": [
+      "学习率",
+      "邻居个数 k",
+      "隐藏层",
+      "树深"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "k 太小易过拟合，太大易欠拟合。",
+    "professor_commentary": "隔壁邻居别太多也别太少。",
+    "topic": "knn",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ml-016",
+    "type": "single",
+    "stem": "决策树分裂常用准则？",
+    "options": [
+      "熵/信息增益或基尼",
+      "余弦相似度",
+      "互相关",
+      "PSNR"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "分类用信息增益/基尼，回归用方差下降。",
+    "professor_commentary": "选对刀口，切得漂亮。",
+    "topic": "decision-tree",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ml-017",
+    "type": "single",
+    "stem": "随机森林与梯度提升的主要区别？",
+    "options": [
+      "Bagging 并行平均 vs Boosting 串行累加",
+      "二者等价",
+      "RF 用二阶信息",
+      "GBDT 不做采样"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "RF 降方差，GBDT 降偏差。",
+    "professor_commentary": "合唱团 vs 接力赛。",
+    "topic": "ensemble",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-018",
+    "type": "single",
+    "stem": "早停（early stopping）主要用于？",
+    "options": [
+      "加速推理",
+      "防过拟合",
+      "数据增强",
+      "特征选择"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "监控验证指标，停止训练。",
+    "professor_commentary": "知道何时收手，是成熟。",
+    "topic": "training",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ml-019",
+    "type": "single",
+    "stem": "PCA 的目标？",
+    "options": [
+      "最大化方差方向",
+      "最小化均值",
+      "最大化类间距",
+      "最大化相关"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "寻找方差最大的正交方向以降维。",
+    "professor_commentary": "先把影子投在最能区分的方向。",
+    "topic": "pca",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-020",
+    "type": "single",
+    "stem": "标准化对树模型的影响通常？",
+    "options": [
+      "非常关键",
+      "影响不大",
+      "必须做",
+      "会导致崩溃"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "树基于阈值分裂，对尺度不敏感。",
+    "professor_commentary": "不该勤快的时候就别勤快。",
+    "topic": "preprocess",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ml-021",
+    "type": "single",
+    "stem": "SVM 的核技巧用于？",
+    "options": [
+      "减少样本",
+      "将数据映到高维使线性可分",
+      "降维",
+      "增加学习率"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "核函数隐式映射到高维特征空间。",
+    "professor_commentary": "空间弯一弯，直线就能过去。",
+    "topic": "svm",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-022",
+    "type": "single",
+    "stem": "交叉熵常用于？",
+    "options": [
+      "回归",
+      "分类概率模型",
+      "聚类",
+      "PCA"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "分类模型的对数似然等价于最小化交叉熵。",
+    "professor_commentary": "别把尺子用错量。",
+    "topic": "loss",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-023",
+    "type": "single",
+    "stem": "数据泄漏的定义？",
+    "options": [
+      "训练时使用测试信息",
+      "缺失值太多",
+      "标准化",
+      "类别不平衡"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "泄漏导致评估过于乐观。",
+    "professor_commentary": "别把答案夹在习题册里。",
+    "topic": "pitfalls",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-024",
+    "type": "single",
+    "stem": "特征缩放对哪类模型更关键？",
+    "options": [
+      "距离/梯度敏感模型",
+      "树模型",
+      "朴素贝叶斯",
+      "规则学习"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "kNN、SVM、线性模型、神经网络更依赖尺度。",
+    "professor_commentary": "距离不对，天地都错。",
+    "topic": "preprocess",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-025",
+    "type": "single",
+    "stem": "L2 正则的效果？",
+    "options": [
+      "鼓励稀疏",
+      "惩罚大权重，缩小但不断绝",
+      "与 L1 相同",
+      "仅对偏置起作用"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "抑制过大权重，稳定优化。",
+    "professor_commentary": "拉回中庸之道。",
+    "topic": "regularization",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ml-026",
+    "type": "single",
+    "stem": "网格搜索的缺点？",
+    "options": [
+      "可并行",
+      "可能高维爆炸",
+      "无法复现",
+      "一定最优"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "参数多时组合爆炸；随机/贝叶斯搜索更高效。",
+    "professor_commentary": "地毯式搜查不一定最省时。",
+    "topic": "tuning",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-027",
+    "type": "single",
+    "stem": "学习曲线可帮助判断？",
+    "options": [
+      "是否过拟合/欠拟合",
+      "是否泄漏",
+      "是否类别不平衡",
+      "是否需要更多特征"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "看训练/验证曲线随样本量变化趋势。",
+    "professor_commentary": "问曲线要答案。",
+    "topic": "diagnostics",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-028",
+    "type": "single",
+    "stem": "k‑means 的目标函数？",
+    "options": [
+      "最小化类内平方和",
+      "最大化间隔",
+      "最大化似然",
+      "最小化熵"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "通过迭代分配与更新质心。",
+    "professor_commentary": "把各自的小团体聚拢。",
+    "topic": "clustering",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-029",
+    "type": "single",
+    "stem": "朴素贝叶斯的“朴素”在于？",
+    "options": [
+      "特征条件独立假设",
+      "参数少",
+      "无监督",
+      "不需要概率"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "条件独立简化了似然计算。",
+    "professor_commentary": "简单不是幼稚，是有假设。",
+    "topic": "naive-bayes",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ml-030",
+    "type": "single",
+    "stem": "校准（calibration）关注？",
+    "options": [
+      "排序",
+      "概率是否与频率匹配",
+      "速度",
+      "复杂度"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "Platt/温度缩放等让概率更可解释。",
+    "professor_commentary": "分不止要排得对，还要报得准。",
+    "topic": "calibration",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-031",
+    "type": "single",
+    "stem": "偏差‑方差权衡中，复杂模型通常？",
+    "options": [
+      "偏差高方差低",
+      "偏差低方差高",
+      "两者都低",
+      "两者都高"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "容量大→拟合强→方差更高。",
+    "professor_commentary": "野马要配缰绳。",
+    "topic": "bias-variance",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-032",
+    "type": "single",
+    "stem": "线性回归对异常值的敏感性？",
+    "options": [
+      "非常敏感",
+      "不敏感",
+      "只对小样本敏感",
+      "只对高维敏感"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "MSE 放大大误差，鲁棒回归可缓解。",
+    "professor_commentary": "别让一个坏苹果毁一框。",
+    "topic": "linear-regression",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-033",
+    "type": "single",
+    "stem": "One‑Hot 编码的缺点？",
+    "options": [
+      "引入顺序关系",
+      "维度爆炸",
+      "丢失信息",
+      "不适合树模型"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "高基数类别会造成稀疏高维。",
+    "professor_commentary": "字典太厚也难翻。",
+    "topic": "feature-eng",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-034",
+    "type": "single",
+    "stem": "时间序列验证应使用？",
+    "options": [
+      "随机打乱 K 折",
+      "时间顺序切分",
+      "留出法随机",
+      "蒙特卡洛随机"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "避免穿越，训练集时间早于验证。",
+    "professor_commentary": "时间这位老师不许抄后面题。",
+    "topic": "evaluation",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-035",
+    "type": "single",
+    "stem": "逻辑回归的决策边界是？",
+    "options": [
+      "线性",
+      "二次曲线",
+      "任意非线性",
+      "树形"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "线性可配合多项式/核扩展。",
+    "professor_commentary": "直线不够用时就弯一弯。",
+    "topic": "logistic-regression",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-036",
+    "type": "single",
+    "stem": "标准化应在什么数据上拟合参数？",
+    "options": [
+      "全量数据",
+      "仅训练集",
+      "仅测试集",
+      "训练+测试"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "避免把测试信息带入训练流程。",
+    "professor_commentary": "别偷看答案。",
+    "topic": "preprocess",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-037",
+    "type": "single",
+    "stem": "特征选择的直接收益不包括？",
+    "options": [
+      "提速",
+      "降噪",
+      "提升泛化",
+      "一定提升训练集准确率"
+    ],
+    "answer": [
+      3
+    ],
+    "explain": "特征选择主要为泛化与效率，训练集分数不一定升。",
+    "professor_commentary": "别迷恋训练分。",
+    "topic": "feature-eng",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-038",
+    "type": "single",
+    "stem": "SVM 中 C 参数控制？",
+    "options": [
+      "正则强度（越大越少正则）",
+      "核类型",
+      "学习率",
+      "维度"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "C 大→容忍误差少→更贴合训练数据。",
+    "professor_commentary": "太苛刻也会钻牛角尖。",
+    "topic": "svm",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-039",
+    "type": "single",
+    "stem": "多分类策略 one‑vs‑rest 的做法？",
+    "options": [
+      "训练一个多分类器",
+      "每类一分类器将其视为正类",
+      "只用阈值",
+      "先聚类后分类"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "将多分类拆成多个二分类。",
+    "professor_commentary": "化整为零，逐个击破。",
+    "topic": "multiclass",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-040",
+    "type": "single",
+    "stem": "梯度下降的学习率过大可能？",
+    "options": [
+      "收敛更快",
+      "震荡甚至发散",
+      "不受影响",
+      "更稳"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "步子太大容易越过最优点。",
+    "professor_commentary": "跑步别一步跨三个台阶。",
+    "topic": "optimization",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-041",
+    "type": "single",
+    "stem": "早停需要什么？",
+    "options": [
+      "只看训练损失",
+      "监控验证集指标",
+      "更大 batch",
+      "更小学习率"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "以验证集最佳点作为停止条件。",
+    "professor_commentary": "别在坡顶下过头。",
+    "topic": "training",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ml-042",
+    "type": "single",
+    "stem": "KMeans 初始点常用算法？",
+    "options": [
+      "随机",
+      "k‑means++",
+      "谱聚类",
+      "DBSCAN"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "k‑means++ 更稳定，减少坏初始化。",
+    "professor_commentary": "起跑姿势决定后程。",
+    "topic": "clustering",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-043",
+    "type": "single",
+    "stem": "数据不平衡时准确率高可能是陷阱，因为？",
+    "options": [
+      "准确率忽略类别分布",
+      "AUC 同样忽略",
+      "PR‑AUC 更差",
+      "F1 更大"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "多数类主导准确率。",
+    "professor_commentary": "平均分掩盖了失败。",
+    "topic": "metrics",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-044",
+    "type": "single",
+    "stem": "岭回归对应的正则？",
+    "options": [
+      "L1",
+      "L2",
+      "ElasticNet",
+      "无"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "岭回归=线性回归+L2。",
+    "professor_commentary": "拉回中线，但不断指。",
+    "topic": "linear-regression",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ml-045",
+    "type": "single",
+    "stem": "Lasso 回归对应？",
+    "options": [
+      "L1",
+      "L2",
+      "无",
+      "核回归"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "Lasso=线性+L1，鼓励稀疏。",
+    "professor_commentary": "敢于‘断舍离’。",
+    "topic": "linear-regression",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ml-046",
+    "type": "single",
+    "stem": "ElasticNet 组合了？",
+    "options": [
+      "L1+L2",
+      "L1+核",
+      "L2+核",
+      "kNN+树"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "弹性网兼具稀疏与稳定。",
+    "professor_commentary": "鱼与熊掌，折中一下。",
+    "topic": "linear-regression",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-047",
+    "type": "single",
+    "stem": "特征缩放对 kNN 的影响？",
+    "options": [
+      "影响大",
+      "影响小",
+      "无影响",
+      "只影响分类不影响回归"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "距离度量受尺度影响显著。",
+    "professor_commentary": "鞋码不一，走不出正确距离。",
+    "topic": "knn",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-048",
+    "type": "single",
+    "stem": "聚类评估常用？",
+    "options": [
+      "轮廓系数",
+      "AIC",
+      "BIC",
+      "F1"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "轮廓系数衡量聚内紧致与聚间分离。",
+    "professor_commentary": "既要抱团也要不串门。",
+    "topic": "clustering",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-049",
+    "type": "single",
+    "stem": "高方差模型的缓解手段？",
+    "options": [
+      "更多数据/正则/集成",
+      "更深模型",
+      "更大学习率",
+      "更少正则"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "降低复杂度或用 Bagging/Dropout。",
+    "professor_commentary": "从源头降噪。",
+    "topic": "generalization",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-050",
+    "type": "single",
+    "stem": "模型校准方法不包括？",
+    "options": [
+      "Platt 缩放",
+      "温度缩放",
+      "等值回归",
+      "数据增强"
+    ],
+    "answer": [
+      3
+    ],
+    "explain": "前三者用于概率校准。",
+    "professor_commentary": "报分要诚实。",
+    "topic": "calibration",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-051",
+    "type": "single",
+    "stem": "DBSCAN 的优势？",
+    "options": [
+      "发现任意形状簇",
+      "需提前指定簇数",
+      "对噪声鲁棒",
+      "可发现离群点"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "密度阈值划分，噪声独立标记。",
+    "professor_commentary": "不强行把人塞进固定班级。",
+    "topic": "clustering",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ml-052",
+    "type": "single",
+    "stem": "特征交互自动学习能力强的是？",
+    "options": [
+      "线性回归",
+      "决策树/提升树",
+      "朴素贝叶斯",
+      "kNN"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "树通过分裂自然编码交互。",
+    "professor_commentary": "树会配对跳舞。",
+    "topic": "models",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-053",
+    "type": "single",
+    "stem": "管道（pipeline）的作用？",
+    "options": [
+      "把预处理与模型打包",
+      "提高 GPU 占用",
+      "减少数据",
+      "改变指标"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "避免泄漏、保证流程一致。",
+    "professor_commentary": "把食谱装进同一只锅。",
+    "topic": "pipeline",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ml-054",
+    "type": "single",
+    "stem": "特征标准化应放在 pipeline 的？",
+    "options": [
+      "训练后手工执行",
+      "交叉验证外部",
+      "模型之前并参与 CV",
+      "部署时再做"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "在 CV 内拟合标准化，保证每折独立。",
+    "professor_commentary": "程序化，别徒手。",
+    "topic": "pipeline",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-055",
+    "type": "single",
+    "stem": "提升树（GBDT）每棵树学习什么？",
+    "options": [
+      "原标签",
+      "残差/负梯度",
+      "随机噪声",
+      "平均值"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "逐步拟合上一轮的残差。",
+    "professor_commentary": "接力补作业。",
+    "topic": "ensemble",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-056",
+    "type": "single",
+    "stem": "特征重要性解释应注意？",
+    "options": [
+      "相关性不等于因果",
+      "可能受编码影响",
+      "应结合外部验证",
+      "等同于 SHAP"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "重要性度量多样，需多角度验证。",
+    "professor_commentary": "别一把尺子量天下。",
+    "topic": "interpretability",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-057",
+    "type": "single",
+    "stem": "A/B 测试与离线评估的关系？",
+    "options": [
+      "离线足够",
+      "线上 A/B 验证真实业务影响",
+      "互斥",
+      "A/B 只能用于回归"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "离线指标不代表线上收益。",
+    "professor_commentary": "实验才是硬道理。",
+    "topic": "evaluation",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-058",
+    "type": "single",
+    "stem": "类别不平衡下更合适的阈值策略？",
+    "options": [
+      "固定 0.5",
+      "根据成本/PR 曲线选择",
+      "任意",
+      "看心情"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "阈值需结合误报/漏报代价。",
+    "professor_commentary": "尺子要按成本刻度刻。",
+    "topic": "decision",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-059",
+    "type": "single",
+    "stem": "特征哈希（hashing trick）的风险？",
+    "options": [
+      "碰撞导致信息混淆",
+      "不能用于文本",
+      "需要监督",
+      "会泄漏标签"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "桶太少会碰撞增多。",
+    "professor_commentary": "省内存也要看代价。",
+    "topic": "feature-eng",
+    "difficulty": "hard"
+  },
+  {
+    "id": "ml-060",
+    "type": "single",
+    "stem": "集成方法常带来什么变化？",
+    "options": [
+      "偏差升方差降",
+      "偏差降方差降（Bagging）",
+      "偏差降方差升（Boosting）",
+      "两者不变"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "Bagging 主要降方差；Boosting 常降偏差但可能增方差。",
+    "professor_commentary": "多把尺子量同一个物体。",
+    "topic": "ensemble",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-061",
+    "type": "multi",
+    "stem": "防止过拟合的常见手段：",
+    "options": [
+      "正则化",
+      "早停",
+      "数据增强/更多数据",
+      "在测试集上调参"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "最后一项是反例，会导致泄漏。",
+    "professor_commentary": "节制、耐心与数据，是三驾马车。",
+    "topic": "generalization",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-062",
+    "type": "multi",
+    "stem": "良好的数据拆分应：",
+    "options": [
+      "分层抽样用于分类",
+      "时间序列按时间切分",
+      "保持测试集只用一次",
+      "确保验证集与训练分布可比"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "拆分策略与任务匹配，评估才可信。",
+    "professor_commentary": "先把赛道分好。",
+    "topic": "evaluation",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-063",
+    "type": "multi",
+    "stem": "选择评估指标时要考虑：",
+    "options": [
+      "类别不平衡",
+      "业务成本矩阵",
+      "校准需求",
+      "模型大小"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "指标需与场景对齐。",
+    "professor_commentary": "尺子服务目标。",
+    "topic": "metrics",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-064",
+    "type": "multi",
+    "stem": "线性模型的优点：",
+    "options": [
+      "可解释",
+      "训练快",
+      "对高维稀疏友好",
+      "能自动学习强非线性"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "非线性需通过特征工程或核方法。",
+    "professor_commentary": "快、稳、可解释是硬通货。",
+    "topic": "models",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ml-065",
+    "type": "multi",
+    "stem": "PCA 的注意事项：",
+    "options": [
+      "应先标准化",
+      "线性降维",
+      "可能丢失可解释性",
+      "非常适合类别分离"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "PCA 不一定保留分类边界。",
+    "professor_commentary": "降维是工程手段，不是魔术。",
+    "topic": "pca",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-066",
+    "type": "multi",
+    "stem": "kNN 算法的缺点：",
+    "options": [
+      "预测慢",
+      "对尺度敏感",
+      "存储成本高",
+      "易外推"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "惰性学习：训练快，预测慢。",
+    "professor_commentary": "邻居多，门槛就高。",
+    "topic": "knn",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-067",
+    "type": "multi",
+    "stem": "决策树常见超参：",
+    "options": [
+      "max_depth",
+      "min_samples_split/leaf",
+      "max_features",
+      "dropout"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "树没有 dropout。",
+    "professor_commentary": "限高、限分、限特征。",
+    "topic": "decision-tree",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ml-068",
+    "type": "multi",
+    "stem": "随机森林的特点：",
+    "options": [
+      "Bagging",
+      "列采样",
+      "可并行",
+      "对外推极强"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "RF 不擅长外推。",
+    "professor_commentary": "站稳脚，别越界。",
+    "topic": "ensemble",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-069",
+    "type": "multi",
+    "stem": "梯度提升（GBDT/XGBoost/LightGBM）的特点：",
+    "options": [
+      "串行迭代",
+      "拟合残差",
+      "易过拟合需正则",
+      "完全不需要调参"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "需要正则与早停等。",
+    "professor_commentary": "好马也要勒缰。",
+    "topic": "ensemble",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-070",
+    "type": "multi",
+    "stem": "SVM 的关键选择：",
+    "options": [
+      "核函数类型",
+      "C 正则参数",
+      "gamma（RBF 核宽度）",
+      "学习率"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "SVM 不是基于学习率。",
+    "professor_commentary": "核与正则是灵魂。",
+    "topic": "svm",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-071",
+    "type": "multi",
+    "stem": "数据清洗的基本动作：",
+    "options": [
+      "缺失值策略",
+      "异常值处理",
+      "重复样本去重",
+      "随机打乱标签"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "打乱标签是反例。",
+    "professor_commentary": "先扫地，再摆桌。",
+    "topic": "data",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-072",
+    "type": "multi",
+    "stem": "特征工程中的文本常用：",
+    "options": [
+      "分词/清洗",
+      "TF‑IDF/词袋",
+      "N‑gram",
+      "PCA 直接用于原始文本字符"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "PCA 直接用于字符不常见。",
+    "professor_commentary": "先把字变成数。",
+    "topic": "nlp-fe",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-073",
+    "type": "multi",
+    "stem": "类别不平衡的处理：",
+    "options": [
+      "分层抽样",
+      "重采样/权重",
+      "调阈值/PR‑AUC",
+      "忽略不平衡"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "忽略会误导。",
+    "professor_commentary": "天平要调平。",
+    "topic": "imbalanced",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-074",
+    "type": "multi",
+    "stem": "交叉验证与 Pipeline 的结合：",
+    "options": [
+      "在每折中拟合预处理",
+      "避免信息泄漏",
+      "参数搜索与 Pipeline 结合",
+      "在全量上先拟合再 CV"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "最后一项是反例。",
+    "professor_commentary": "把流程装进一根管。",
+    "topic": "pipeline",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-075",
+    "type": "multi",
+    "stem": "模型选择时应关注：",
+    "options": [
+      "泛化性能",
+      "复杂度/推理成本",
+      "可解释性/合规",
+      "训练集准确率最高即可"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "单看训练分是危险信号。",
+    "professor_commentary": "选型是多目标优化。",
+    "topic": "model-selection",
+    "difficulty": "intro"
+  },
+  {
+    "id": "ml-076",
+    "type": "multi",
+    "stem": "聚类方法的差异：",
+    "options": [
+      "k‑means 偏球形簇",
+      "层次聚类可得树状结果",
+      "DBSCAN 不需事先指定簇数",
+      "GMM 可建软分配"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "根据数据几何与噪声挑方法。",
+    "professor_commentary": "鞋合不合脚，脚知道。",
+    "topic": "clustering",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-077",
+    "type": "multi",
+    "stem": "特征重要性常见方法：",
+    "options": [
+      "基于模型的 gain/weight",
+      "Permutation importance",
+      "SHAP",
+      "随机删除特征在测试集上再训练"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "最后一项代价高且不稳定。",
+    "professor_commentary": "解释要高效又稳健。",
+    "topic": "interpretability",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-078",
+    "type": "multi",
+    "stem": "管道中可组合的步骤：",
+    "options": [
+      "标准化/编码",
+      "特征选择",
+      "模型",
+      "在线 A/B 测试"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "A/B 是部署阶段。",
+    "professor_commentary": "离线流程先打包好。",
+    "topic": "pipeline",
+    "difficulty": "easy"
+  },
+  {
+    "id": "ml-079",
+    "type": "multi",
+    "stem": "提升鲁棒性的常规手段：",
+    "options": [
+      "鲁棒损失（MAE/Huber）",
+      "对抗样本训练（高阶）",
+      "数据增强",
+      "更换评估指标"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "指标不能直接提升鲁棒性。",
+    "professor_commentary": "刀要硬，盾也要厚。",
+    "topic": "robust",
+    "difficulty": "med"
+  },
+  {
+    "id": "ml-080",
+    "type": "multi",
+    "stem": "良好实验管理包括：",
+    "options": [
+      "固定随机种子",
+      "记录配置/数据版本",
+      "结果可复现",
+      "随手覆盖旧模型"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "覆盖旧模型是反例。",
+    "professor_commentary": "科学的尽头是可复现。",
+    "topic": "practice",
+    "difficulty": "intro"
+  }
+]

@@ -1,0 +1,1891 @@
+[
+  {
+    "id": "xgb-001",
+    "type": "single",
+    "stem": "XGBoost 的中文直觉是？",
+    "options": [
+      "极端梯度下降",
+      "梯度提升树",
+      "随机森林",
+      "朴素贝叶斯"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "XGBoost 是 Gradient Boosting 的高效实现，核心是“树 + 梯度提升”。",
+    "professor_commentary": "名字吓人，内核朴素：一次补一小刀，越补越像。",
+    "topic": "overview",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-002",
+    "type": "single",
+    "stem": "XGBoost 默认的 booster 类型是？",
+    "options": [
+      "gbtree",
+      "gblinear",
+      "dart",
+      "rf"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "常用基学习器是树（gbtree）。",
+    "professor_commentary": "先把树玩明白，再谈花样。",
+    "topic": "booster",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-003",
+    "type": "single",
+    "stem": "学习率（eta）的作用？",
+    "options": [
+      "增深树",
+      "控制每轮步长/收缩",
+      "决定特征数",
+      "决定样本数"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "eta 缩小每棵树的贡献，常与较多轮数配合。",
+    "professor_commentary": "小口喝汤，别烫着模型。",
+    "topic": "optimization",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-004",
+    "type": "single",
+    "stem": "max_depth 控制？",
+    "options": [
+      "叶子数",
+      "树深",
+      "特征维度",
+      "样本权重"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "树越深越容易过拟合。",
+    "professor_commentary": "别让树长进天花板。",
+    "topic": "model-capacity",
+    "difficulty": "easy"
+  },
+  {
+    "id": "xgb-005",
+    "type": "single",
+    "stem": "subsample 的作用？",
+    "options": [
+      "列采样",
+      "行采样",
+      "特征归一化",
+      "目标平衡"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "按行子采样引入噪声，缓解过拟合并提速。",
+    "professor_commentary": "掺点‘随机’，模型更结实。",
+    "topic": "regularization",
+    "difficulty": "easy"
+  },
+  {
+    "id": "xgb-006",
+    "type": "single",
+    "stem": "colsample_bytree 控制？",
+    "options": [
+      "每棵树的列采样比例",
+      "每一层的列采样",
+      "每个节点的列采样",
+      "样本采样"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "按树级别随机选择特征子集。",
+    "professor_commentary": "不是只有随机森林才会列采样。",
+    "topic": "regularization",
+    "difficulty": "easy"
+  },
+  {
+    "id": "xgb-007",
+    "type": "single",
+    "stem": "min_child_weight 的直觉？",
+    "options": [
+      "限制叶子最小样本权重和",
+      "限制树深",
+      "限制特征数",
+      "提升学习率"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "阈值越大，需要更强证据才分裂，防止过拟合。",
+    "professor_commentary": "没有足够票数，就别分家。",
+    "topic": "regularization",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-008",
+    "type": "single",
+    "stem": "gamma（min_split_loss）的含义？",
+    "options": [
+      "L2 正则",
+      "分裂需要的最小损失下降",
+      "学习率",
+      "叶子数上限"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "只有当增益超过 gamma 时才允许分裂。",
+    "professor_commentary": "动刀要有收益，否则不切。",
+    "topic": "regularization",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-009",
+    "type": "single",
+    "stem": "lambda 与 alpha 分别对应？",
+    "options": [
+      "L1 与 L2",
+      "L2 与 L1",
+      "dropout 与衰减",
+      "学习率与动量"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "lambda=L2，alpha=L1。",
+    "professor_commentary": "一个拉成圆，一个拉成零。",
+    "topic": "regularization",
+    "difficulty": "easy"
+  },
+  {
+    "id": "xgb-010",
+    "type": "single",
+    "stem": "n_estimators 在 sklearn 接口中等价于？",
+    "options": [
+      "max_depth",
+      "num_boost_round",
+      "树的宽度",
+      "随机种子"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "等价于提升轮数。",
+    "professor_commentary": "轮数多、步子小，常常更稳。",
+    "topic": "training",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-011",
+    "type": "single",
+    "stem": "常用于二分类的目标函数？",
+    "options": [
+      "reg:squarederror",
+      "binary:logistic",
+      "count:poisson",
+      "rank:pairwise"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "binary:logistic 输出为概率，评估常用 logloss/AUC。",
+    "professor_commentary": "先把二分类练熟。",
+    "topic": "objective",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-012",
+    "type": "single",
+    "stem": "多分类通常使用的 objective？",
+    "options": [
+      "multi:softmax",
+      "binary:logitraw",
+      "multi:softprob",
+      "reg:gamma"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "softprob 输出每类概率，softmax 只输出类别索引。",
+    "professor_commentary": "要概率就 softprob。",
+    "topic": "objective",
+    "difficulty": "easy"
+  },
+  {
+    "id": "xgb-013",
+    "type": "single",
+    "stem": "回归任务的默认 objective？",
+    "options": [
+      "reg:squarederror",
+      "reg:logistic",
+      "reg:gamma",
+      "reg:squaredlogerror"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "平方误差是回归基本盘。",
+    "professor_commentary": "从平方误差起步。",
+    "topic": "objective",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-014",
+    "type": "single",
+    "stem": "eval_metric=AUC 适用？",
+    "options": [
+      "回归",
+      "二分类排序能力",
+      "多分类",
+      "计数回归"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "AUC 衡量排序/区分能力。",
+    "professor_commentary": "别拿锤子量体温。",
+    "topic": "metrics",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-015",
+    "type": "single",
+    "stem": "early_stopping_rounds 需要什么配合？",
+    "options": [
+      "监控训练集",
+      "提供验证集并启用评估",
+      "更大学习率",
+      "增加正则"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "早停依赖验证集上的指标连续不提升。",
+    "professor_commentary": "别盯着自家镜子照，出去见见人。",
+    "topic": "training",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-016",
+    "type": "single",
+    "stem": "tree_method='hist' 的优势？",
+    "options": [
+      "最精确",
+      "基于直方图更快更省内存",
+      "只支持小数据",
+      "不能并行"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "构建直方图近似分裂增益，速度与内存友好。",
+    "professor_commentary": "算得快是第一生产力。",
+    "topic": "systems",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-017",
+    "type": "single",
+    "stem": "缺失值在 XGBoost 中的处理？",
+    "options": [
+      "必须先填充",
+      "自动学习缺失方向",
+      "直接丢弃样本",
+      "转为0"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "每个分裂会为缺失样本学到默认走向。",
+    "professor_commentary": "会游泳的模型，不怕坑洼。",
+    "topic": "missing-data",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-018",
+    "type": "single",
+    "stem": "正则项的作用是？",
+    "options": [
+      "提高训练误差",
+      "控制模型复杂度防过拟合",
+      "缩小数据",
+      "改变目标"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "对叶子权重与叶子数量惩罚，使树更简洁。",
+    "professor_commentary": "复杂不是高明，恰到好处才是。",
+    "topic": "regularization",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-019",
+    "type": "single",
+    "stem": "eta 降低通常需要？",
+    "options": [
+      "更少轮数",
+      "更多轮数",
+      "更大深度",
+      "更小 subsample"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "步子小了，需要更多步才能到位。",
+    "professor_commentary": "慢工出细活。",
+    "topic": "optimization",
+    "difficulty": "easy"
+  },
+  {
+    "id": "xgb-020",
+    "type": "single",
+    "stem": "XGBoost 的“二阶”指？",
+    "options": [
+      "二阶导数信息（Hessian）",
+      "二叉树",
+      "二分类",
+      "第二层节点"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "利用一阶梯度和二阶 Hessian 近似优化。",
+    "professor_commentary": "不止看坡度，还看地形曲率。",
+    "topic": "theory",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-021",
+    "type": "single",
+    "stem": "DMatrix 的好处？",
+    "options": [
+      "更快更省内存的内部格式",
+      "只能装 numpy",
+      "只能装稀疏矩阵",
+      "只能装 pandas"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "DMatrix 支持密集/稀疏并携带权重等信息。",
+    "professor_commentary": "数据先摆成合适的餐盘。",
+    "topic": "data-io",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-022",
+    "type": "single",
+    "stem": "scale_pos_weight 用于？",
+    "options": [
+      "样本权重缩放以应对类别不平衡",
+      "调整学习率",
+      "特征标准化",
+      "调深度"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "按正负样本比例缩放梯度，有助于极度不平衡场景。",
+    "professor_commentary": "轻重有别，分寸拿捏。",
+    "topic": "imbalanced",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-023",
+    "type": "single",
+    "stem": "objective='rank:pairwise' 用于？",
+    "options": [
+      "排序学习",
+      "回归",
+      "多分类",
+      "异常检测"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "基于成对比较的学习排序。",
+    "professor_commentary": "不光要答对，还要排得好。",
+    "topic": "ranking",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-024",
+    "type": "single",
+    "stem": "DART 的核心思想？",
+    "options": [
+      "丢弃特征",
+      "树级 dropout",
+      "只用线性模型",
+      "强制浅树"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "训练时随机丢弃部分树的贡献，缓解过拟合。",
+    "professor_commentary": "偶尔忘记几步，有助于长记性。",
+    "topic": "dart",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-025",
+    "type": "single",
+    "stem": "linear booster 的特点？",
+    "options": [
+      "基学习器是线性模型",
+      "更快更准",
+      "等同于逻辑回归",
+      "不支持正则"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "gblinear 用坐标下降等优化线性模型。",
+    "professor_commentary": "树不是唯一选择，线性也能当基石。",
+    "topic": "booster",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-026",
+    "type": "single",
+    "stem": "树模型处理强非线性/交互项的方式？",
+    "options": [
+      "自动学习非线性交互",
+      "必须手工构造交互",
+      "需要核函数",
+      "必须多项式展开"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "树的分裂天然能表达交互与非线性。",
+    "professor_commentary": "让数据自己决定怎么分。",
+    "topic": "representation",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-027",
+    "type": "single",
+    "stem": "evals_result_ 用于？",
+    "options": [
+      "记录评估指标随轮数变化",
+      "保存模型",
+      "特征重要性",
+      "导出 JSON"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "可用来画学习曲线与早停诊断。",
+    "professor_commentary": "别光有感觉，要有曲线。",
+    "topic": "monitoring",
+    "difficulty": "easy"
+  },
+  {
+    "id": "xgb-028",
+    "type": "single",
+    "stem": "max_bin 参数主要影响？",
+    "options": [
+      "直方图桶数",
+      "叶子数",
+      "列数",
+      "样本数"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "更多的桶更精细但更慢，较少更快但近似粗。",
+    "professor_commentary": "刻度尺越密，量得越细，时间也越久。",
+    "topic": "systems",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-029",
+    "type": "single",
+    "stem": "monotone_constraints 的作用？",
+    "options": [
+      "强制特征与预测单调关系",
+      "提高学习率",
+      "随机采样",
+      "早停"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "在一些业务上能编码因果/法规先验。",
+    "professor_commentary": "给模型戴上道德与物理的缰绳。",
+    "topic": "constraints",
+    "difficulty": "hard"
+  },
+  {
+    "id": "xgb-030",
+    "type": "single",
+    "stem": "GPU 加速常用的 tree_method？",
+    "options": [
+      "exact",
+      "approx",
+      "hist",
+      "gpu_hist"
+    ],
+    "answer": [
+      3
+    ],
+    "explain": "gpu_hist 在中大数据上明显提速。",
+    "professor_commentary": "用好显卡，省下周末。",
+    "topic": "systems",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-031",
+    "type": "single",
+    "stem": "reg:gamma 适合的目标？",
+    "options": [
+      "计数非负右偏",
+      "对称噪声回归",
+      "多分类",
+      "二分类"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "Gamma 分布用于正值且偏度较大的回归。",
+    "professor_commentary": "分布错了，药方就不对。",
+    "topic": "objective",
+    "difficulty": "hard"
+  },
+  {
+    "id": "xgb-032",
+    "type": "single",
+    "stem": "label 与 weight 的关系？",
+    "options": [
+      "weight 改变样本损失权重",
+      "weight 改标签",
+      "weight 改特征",
+      "无影响"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "权重影响梯度与 Hessian 的规模。",
+    "professor_commentary": "同一句话，重读的词更响。",
+    "topic": "data-io",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-033",
+    "type": "single",
+    "stem": "max_leaves 与 max_depth 的关系？",
+    "options": [
+      "完全等价",
+      "max_leaves 限制 CART 叶子总数",
+      "与 subsample 冲突",
+      "和学习率相同"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "限制叶子总数也是控制复杂度的方法。",
+    "professor_commentary": "叶子多不一定是好事。",
+    "topic": "model-capacity",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-034",
+    "type": "single",
+    "stem": "sklearn API 的 XGBClassifier 里 n_estimators 与早停？",
+    "options": [
+      "互斥",
+      "可设置较大 n_estimators 搭配 early_stopping_rounds",
+      "只能二选一",
+      "与验证集无关"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "通常设大些配合早停自动挑轮数。",
+    "professor_commentary": "多备几步路，走到合适就停。",
+    "topic": "training",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-035",
+    "type": "single",
+    "stem": "树分裂的增益依据？",
+    "options": [
+      "信息增益近似",
+      "基于梯度与 Hessian 的增益公式",
+      "基于相关系数",
+      "基于互信息精确计算"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "XGBoost 使用二阶近似得到的分裂增益。",
+    "professor_commentary": "做题看一阶，冲刺看二阶。",
+    "topic": "theory",
+    "difficulty": "hard"
+  },
+  {
+    "id": "xgb-036",
+    "type": "single",
+    "stem": "eta 与 n_estimators 的常见搭配？",
+    "options": [
+      "大 eta 小轮数",
+      "小 eta 大轮数",
+      "eta 与轮数无关",
+      "eta 越小越过拟合"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "小步慢走更稳，一般需更多轮。",
+    "professor_commentary": "跑马拉松，不是百米冲刺。",
+    "topic": "optimization",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-037",
+    "type": "single",
+    "stem": "colsample_bylevel 与 colsample_bynode 的差异？",
+    "options": [
+      "层级 vs 节点级的列采样",
+      "树级 vs 层级",
+      "行采样",
+      "无差异"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "越细粒度的列采样越随机，正则更强。",
+    "professor_commentary": "撒一把胡椒面儿，味更均。",
+    "topic": "regularization",
+    "difficulty": "hard"
+  },
+  {
+    "id": "xgb-038",
+    "type": "single",
+    "stem": "XGBoost 处理稀疏特征的优势来自？",
+    "options": [
+      "缺失方向学习 + 稀疏感知分裂",
+      "必须先密化",
+      "必须均值填充",
+      "只能线性"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "稀疏感知算法在扫描时跳过零并学缺失走向。",
+    "professor_commentary": "尊重稀疏，别强行填满。",
+    "topic": "systems",
+    "difficulty": "hard"
+  },
+  {
+    "id": "xgb-039",
+    "type": "single",
+    "stem": "外部内存（external memory）用于？",
+    "options": [
+      "超大数据分块训练",
+      "GPU 必须",
+      "小数据更快",
+      "只能回归"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "通过缓存与块化在磁盘上迭代。",
+    "professor_commentary": "内存不够也要把活儿干完。",
+    "topic": "systems",
+    "difficulty": "hard"
+  },
+  {
+    "id": "xgb-040",
+    "type": "single",
+    "stem": "特征重要性的“gain”指？",
+    "options": [
+      "分裂次数",
+      "覆盖样本数",
+      "平均增益",
+      "叶子权重"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "gain 度量该特征带来的损失下降。",
+    "professor_commentary": "别迷信次数，关键看收益。",
+    "topic": "interpretability",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-041",
+    "type": "single",
+    "stem": "对高度不平衡二分类首先尝试？",
+    "options": [
+      "增大学习率",
+      "scale_pos_weight 或样本重采样",
+      "减 max_depth",
+      "关早停"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "权衡正负类对梯度的影响，或上采样/下采样。",
+    "professor_commentary": "天平先调平再称重。",
+    "topic": "imbalanced",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-042",
+    "type": "single",
+    "stem": "eval_metric='logloss' 更适合？",
+    "options": [
+      "回归",
+      "二分类概率校准",
+      "排序",
+      "多分类宏平均"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "logloss 惩罚概率偏离。",
+    "professor_commentary": "会给分的不只是对错，还有自信。",
+    "topic": "metrics",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-043",
+    "type": "single",
+    "stem": "XGBoost 与随机森林的区别：",
+    "options": [
+      "前者并行平均，后者串行累加",
+      "前者串行累加，后者并行平均",
+      "二者完全相同",
+      "后者使用二阶信息"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "RF 是并行 Bagging；Boosting 是串行前向加法。",
+    "professor_commentary": "一个是合唱团，一个是接力赛。",
+    "topic": "overview",
+    "difficulty": "easy"
+  },
+  {
+    "id": "xgb-044",
+    "type": "single",
+    "stem": "训练/验证/测试的正确用法？",
+    "options": [
+      "训练+验证调参，测试仅最后评估",
+      "测试用于早停",
+      "验证用于最终报告",
+      "训练=测试"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "避免信息泄漏，测试只看一次。",
+    "professor_commentary": "别把答案写进作业。",
+    "topic": "evaluation",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-045",
+    "type": "single",
+    "stem": "weight_col 在 sklearn 接口中可用于？",
+    "options": [
+      "传样本权重",
+      "传特征权重",
+      "调学习率",
+      "指定早停"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "每个样本权重可不同。",
+    "professor_commentary": "尊重个体差异。",
+    "topic": "data-io",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-046",
+    "type": "single",
+    "stem": "max_delta_step 的用途？",
+    "options": [
+      "限制叶子权重步长（分类更稳定）",
+      "控制深度",
+      "控制学习率",
+      "控制列采样"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "在极不平衡分类时能稳定更新。",
+    "professor_commentary": "迈小步，不摔跤。",
+    "topic": "stability",
+    "difficulty": "hard"
+  },
+  {
+    "id": "xgb-047",
+    "type": "single",
+    "stem": "树方法 'exact' 的特点？",
+    "options": [
+      "最精确最慢",
+      "近似最快",
+      "只支持 GPU",
+      "只支持小数值"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "exact 精确扫描阈值，但对大数据慢。",
+    "professor_commentary": "精确不是唯一指标。",
+    "topic": "systems",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-048",
+    "type": "single",
+    "stem": "sklearn API 与原生 API 的差异：",
+    "options": [
+      "完全一致",
+      "参数名与早停等用法略有差别",
+      "互不兼容",
+      "模型文件不可互用"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "两套接口概念一致但细节不同。",
+    "professor_commentary": "换锅也要会做菜。",
+    "topic": "api",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-049",
+    "type": "single",
+    "stem": "树模型中“剪枝”在 XGBoost 体现为？",
+    "options": [
+      "预剪枝条件如 gamma、min_child_weight",
+      "后剪枝删除枝条",
+      "自动特征选择",
+      "L0 正则"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "通过阈值抑制无益分裂。",
+    "professor_commentary": "刀法要稳。",
+    "topic": "regularization",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-050",
+    "type": "single",
+    "stem": "训练速度主要受限于？",
+    "options": [
+      "样本与特征规模、tree_method、max_bin",
+      "学习率",
+      "评估指标",
+      "随机种子"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "算法与规模决定训练时间级别。",
+    "professor_commentary": "刀要快，木头也要薄。",
+    "topic": "systems",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-051",
+    "type": "single",
+    "stem": "特征较多且相关性强时建议：",
+    "options": [
+      "更深树",
+      "降低列采样比例",
+      "关闭正则",
+      "提高学习率"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "列采样可降低相关特征的共适应。",
+    "professor_commentary": "让‘合唱团’分声部。",
+    "topic": "regularization",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-052",
+    "type": "single",
+    "stem": "过拟合的典型症状？",
+    "options": [
+      "训练好、验证差",
+      "训练差、验证好",
+      "都差",
+      "都好"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "泛化能力弱。",
+    "professor_commentary": "别只在家门口跑得快。",
+    "topic": "generalization",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-053",
+    "type": "single",
+    "stem": "DMatrix 可以携带哪些额外信息？",
+    "options": [
+      "仅特征",
+      "标签/权重/基线分/分组",
+      "图结构",
+      "时间戳"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "如 ranking 任务需要分组信息。",
+    "professor_commentary": "把考生按考场分好。",
+    "topic": "data-io",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-054",
+    "type": "single",
+    "stem": "二分类直接输出 logit 的 objective 是？",
+    "options": [
+      "binary:logistic",
+      "binary:logitraw",
+      "reg:squarederror",
+      "rank:pairwise"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "logitraw 输出未过 sigmoid 的值。",
+    "professor_commentary": "概率和 logit 一线之隔。",
+    "topic": "objective",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-055",
+    "type": "single",
+    "stem": "类别型特征常见处理？",
+    "options": [
+      "一键原生支持",
+      "独热/目标编码等预处理",
+      "直接转整数就好",
+      "忽略"
+    ],
+    "answer": [
+      1
+    ],
+    "explain": "传统 XGBoost 需外部编码（新版也有原生支持选项，视平台）。",
+    "professor_commentary": "别拿邮编当数轴。",
+    "topic": "feature-eng",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-056",
+    "type": "single",
+    "stem": "num_parallel_tree 的作用（rf 风格）？",
+    "options": [
+      "同一轮生成多棵树并平均",
+      "增加深度",
+      "改变学习率",
+      "剪枝"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "与 subsample/colsample 搭配类似随机森林。",
+    "professor_commentary": "一轮多颗，投票更稳。",
+    "topic": "ensemble",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-057",
+    "type": "single",
+    "stem": "DART 相比 gbtree 可能带来的影响？",
+    "options": [
+      "更强随机性、训练慢些",
+      "完全一样",
+      "不支持分类",
+      "不支持早停"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "Dropout 需要额外的推断权重。",
+    "professor_commentary": "花样多也要付出代价。",
+    "topic": "dart",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-058",
+    "type": "single",
+    "stem": "设置 random_state 的意义？",
+    "options": [
+      "可复现随机过程",
+      "更快",
+      "更准确",
+      "改变目标函数"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "固定随机性便于实验对比。",
+    "professor_commentary": "科学需要可复现。",
+    "topic": "reproducibility",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-059",
+    "type": "single",
+    "stem": "feature_importances_ 在树模型中默认度量多为？",
+    "options": [
+      "gain/weight/cover 中的一种",
+      "SHAP",
+      "Permutation",
+      "AUC"
+    ],
+    "answer": [
+      0
+    ],
+    "explain": "不同实现默认不同，要看文档。",
+    "professor_commentary": "先问清楚‘尺子’再量。",
+    "topic": "interpretability",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-060",
+    "type": "single",
+    "stem": "XGBoost 的核心优点不包括？",
+    "options": [
+      "高效/可并行/鲁棒",
+      "易处理缺失与稀疏",
+      "天然处理时序泄漏",
+      "支持多任务目标"
+    ],
+    "answer": [
+      2
+    ],
+    "explain": "时序泄漏需要数据划分策略保障。",
+    "professor_commentary": "算法再强，也怕穿越。",
+    "topic": "pitfalls",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-061",
+    "type": "multi",
+    "stem": "典型的防过拟合手段有：",
+    "options": [
+      "降低 max_depth",
+      "增大 min_child_weight",
+      "调高 gamma",
+      "提高学习率"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "降低复杂度与设置分裂门槛更有效；盲目提学习率反而不稳。",
+    "professor_commentary": "克制是一种美德。",
+    "topic": "regularization",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-062",
+    "type": "multi",
+    "stem": "下列关于 subsample/colsample 的说法正确：",
+    "options": [
+      "引入随机性可提高泛化",
+      "可加速训练",
+      "与随机森林理念相近",
+      "会破坏模型"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "子采样降低方差，常与正则同向。",
+    "professor_commentary": "别怕随机，怕的是一致性过头。",
+    "topic": "regularization",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-063",
+    "type": "multi",
+    "stem": "关于学习率（eta）的经验：",
+    "options": [
+      "eta 小需更多轮",
+      "过小可能欠拟合",
+      "与早停联用效果好",
+      "越大越好"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "步子小+多轮+早停是常见组合。",
+    "professor_commentary": "慢就是快。",
+    "topic": "optimization",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-064",
+    "type": "multi",
+    "stem": "XGBoost 二阶近似需要用到：",
+    "options": [
+      "一阶梯度",
+      "二阶 Hessian",
+      "三阶张量",
+      "仅损失值"
+    ],
+    "answer": [
+      0,
+      1
+    ],
+    "explain": "二阶信息帮助更稳更快地确定分裂增益。",
+    "professor_commentary": "看坡也看弯。",
+    "topic": "theory",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-065",
+    "type": "multi",
+    "stem": "选择 eval_metric 的考虑：",
+    "options": [
+      "任务类型（回归/分类/排序）",
+      "目标是否需校准",
+      "是否抗类别不平衡",
+      "随便选"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "指标需与业务目标一致。",
+    "professor_commentary": "别用尺量体温。",
+    "topic": "metrics",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-066",
+    "type": "multi",
+    "stem": "早停常见陷阱：",
+    "options": [
+      "验证集泄漏",
+      "监控错误的数据集",
+      "耐心值太小或太大",
+      "未固定随机种子导致抖动"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "流程与随机性都会影响早停判定。",
+    "professor_commentary": "实验要严谨。",
+    "topic": "training",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-067",
+    "type": "multi",
+    "stem": "提升树方法 tree_method 的选择：",
+    "options": [
+      "exact 小数据精确",
+      "hist 更快更省",
+      "gpu_hist 在中大数据更优",
+      "approx 在分布式常用"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "按数据规模与硬件选择。",
+    "professor_commentary": "兵马未动，粮草先行。",
+    "topic": "systems",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-068",
+    "type": "multi",
+    "stem": "高维稀疏文本特征的建议：",
+    "options": [
+      "使用稀疏矩阵输入 DMatrix",
+      "调大 max_depth",
+      "使用 'hist' 或 'gpu_hist'",
+      "适度列采样"
+    ],
+    "answer": [
+      0,
+      2,
+      3
+    ],
+    "explain": "稀疏友好方法+列采样常更稳。",
+    "professor_commentary": "别硬塞成稠密。",
+    "topic": "systems",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-069",
+    "type": "multi",
+    "stem": "排序学习（ranking）需要的额外数据：",
+    "options": [
+      "分组/查询 id",
+      "样本权重",
+      "pairwise/listwise 目标",
+      "时间戳"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "每个 query 内比较相关性。",
+    "professor_commentary": "先分考场再比成绩。",
+    "topic": "ranking",
+    "difficulty": "hard"
+  },
+  {
+    "id": "xgb-070",
+    "type": "multi",
+    "stem": "严重类别不平衡下的技巧：",
+    "options": [
+      "scale_pos_weight",
+      "正负样本重采样",
+      "阈值移动/PR 曲线",
+      "忽略不平衡"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "训练与推断两端都可做调节。",
+    "professor_commentary": "天平要两头都看。",
+    "topic": "imbalanced",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-071",
+    "type": "multi",
+    "stem": "特征重要性解读的注意：",
+    "options": [
+      "gain 更关注质量",
+      "weight 关注次数",
+      "cover 关注覆盖",
+      "都能完全代表因果"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "重要性不是因果，需结合 SHAP/实验。",
+    "professor_commentary": "别把相关当因果。",
+    "topic": "interpretability",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-072",
+    "type": "multi",
+    "stem": "关于 SHAP 值：",
+    "options": [
+      "能度量单样本特征贡献",
+      "对树模型有高效算法",
+      "可用于全局/局部解释",
+      "等价于权重"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "树 SHAP 速度快，解释细粒度。",
+    "professor_commentary": "解释是桥梁，不是终点。",
+    "topic": "interpretability",
+    "difficulty": "hard"
+  },
+  {
+    "id": "xgb-073",
+    "type": "multi",
+    "stem": "调参优先级常见顺序：",
+    "options": [
+      "先搞定目标/评估与验证切分",
+      "选择 tree_method 与数据格式",
+      "搜索深度/叶子/子采样",
+      "最后微调学习率与轮数"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "先把问题定义好，再谈花式调参。",
+    "professor_commentary": "问题定义比答案更重要。",
+    "topic": "practice",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-074",
+    "type": "multi",
+    "stem": "加速训练的常见做法：",
+    "options": [
+      "hist/gpu_hist",
+      "降低 max_bin",
+      "减少特征/采样",
+      "用 DMatrix 与外部内存"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "速度来自算法、数据与硬件的协同。",
+    "professor_commentary": "所有系统问题都是数据问题。",
+    "topic": "systems",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-075",
+    "type": "multi",
+    "stem": "避免数据穿越（泄漏）：",
+    "options": [
+      "按时间切分验证",
+      "禁止用测试集调参",
+      "管控特征构造窗口",
+      "在全量数据上标准化后再切分"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "标准化等变换也需在训练集拟合后应用于验证/测试。",
+    "professor_commentary": "时间面前人人平等。",
+    "topic": "evaluation",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-076",
+    "type": "multi",
+    "stem": "特征工程与树模型：",
+    "options": [
+      "无需缩放到相同量纲",
+      "适度做类别编码",
+      "高基数类别要小心",
+      "必须做 PCA"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "树对量纲不敏感，但对编码方式敏感。",
+    "professor_commentary": "该偷懒时就偷懒。",
+    "topic": "feature-eng",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-077",
+    "type": "multi",
+    "stem": "DART 的调参注意：",
+    "options": [
+      "drop_rate 过大可能欠拟合",
+      "需与学习率配合",
+      "推理需要归一化权重",
+      "dropout 与早停互斥"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "把‘遗忘’控制在合理范围。",
+    "professor_commentary": "记忆也要有间隔。",
+    "topic": "dart",
+    "difficulty": "hard"
+  },
+  {
+    "id": "xgb-078",
+    "type": "multi",
+    "stem": "回归任务评估可考虑：",
+    "options": [
+      "RMSE/MAE",
+      "R^2",
+      "MAPE（需注意零/极端值）",
+      "AUC"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "按业务容忍度选择误差度量。",
+    "professor_commentary": "尺子要贴着场景。",
+    "topic": "metrics",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-079",
+    "type": "multi",
+    "stem": "多分类评估可考虑：",
+    "options": [
+      "accuracy",
+      "macro/micro F1",
+      "logloss",
+      "PR-AUC（每类/加权）"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "样本不均衡时宏/微加权有差异。",
+    "professor_commentary": "平均方式决定结论。",
+    "topic": "metrics",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-080",
+    "type": "multi",
+    "stem": "部署与推理的要点：",
+    "options": [
+      "保存模型与版本",
+      "记录特征处理流水线",
+      "一致的缺失处理策略",
+      "在线与离线一致性"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "训练/推理一条龙，差一环就会翻车。",
+    "professor_commentary": "工程是科学的现实检验。",
+    "topic": "deployment",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-081",
+    "type": "multi",
+    "stem": "特征选择与降维：",
+    "options": [
+      "基于重要性阈值",
+      "递归特征消除",
+      "基于模型稀疏正则",
+      "任意删除高相关特征不会影响"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "特征减少常提速并降噪，但要验证效果。",
+    "professor_commentary": "刀要磨在刀背上。",
+    "topic": "feature-eng",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-082",
+    "type": "multi",
+    "stem": "调参过程中的实验管理：",
+    "options": [
+      "固定随机种子",
+      "记录配置与结果",
+      "网格/贝叶斯搜索",
+      "不需要版本控制"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "实验可复现是最低要求。",
+    "professor_commentary": "记笔记就是在省时间。",
+    "topic": "practice",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-083",
+    "type": "multi",
+    "stem": "关于交叉验证（CV）：",
+    "options": [
+      "能减少方差",
+      "时间序列需用时序 CV",
+      "CV 可与早停结合",
+      "CV 一定优于单一验证集"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "方法要与数据结构匹配。",
+    "professor_commentary": "别拿斧子当尺子。",
+    "topic": "evaluation",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-084",
+    "type": "multi",
+    "stem": "XGBoost 的目标函数可自定义，这意味着：",
+    "options": [
+      "可自定义梯度与 Hessian",
+      "可自定义评估指标",
+      "可实现特殊损失",
+      "无需考虑数值稳定"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "自定义需谨慎处理稳定性与边界。",
+    "professor_commentary": "权力越大，责任越大。",
+    "topic": "advanced",
+    "difficulty": "hard"
+  },
+  {
+    "id": "xgb-085",
+    "type": "multi",
+    "stem": "学习曲线的正确解读：",
+    "options": [
+      "训练降、验证降：正常",
+      "训练降、验证升：过拟合",
+      "训练高、验证高：欠拟合",
+      "验证最佳点常用于早停"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "既看趋势也看拐点。",
+    "professor_commentary": "曲线会说话。",
+    "topic": "monitoring",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-086",
+    "type": "multi",
+    "stem": "工程化落地的常见坑：",
+    "options": [
+      "线上特征处理不一致",
+      "模型文件/版本漂移",
+      "评估指标与业务 KPI 脱节",
+      "使用外部内存导致性能下降"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "从数据到指标，环环相扣。",
+    "professor_commentary": "工程的细节决定生死。",
+    "topic": "deployment",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-087",
+    "type": "multi",
+    "stem": "列采样的粒度有：",
+    "options": [
+      "bytree",
+      "bylevel",
+      "bynode",
+      "byfeature"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "不同粒度控制随机性的强弱。",
+    "professor_commentary": "撒盐要均匀。",
+    "topic": "regularization",
+    "difficulty": "hard"
+  },
+  {
+    "id": "xgb-088",
+    "type": "multi",
+    "stem": "模型稳定性的做法：",
+    "options": [
+      "多次训练取平均",
+      "设置随机种子",
+      "控制数据漂移",
+      "完全不需要监控"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "稳定性来自过程控制和监控。",
+    "professor_commentary": "别迷信一次结果。",
+    "topic": "stability",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-089",
+    "type": "multi",
+    "stem": "特征交互的探查：",
+    "options": [
+      "部分依赖图(PDP)",
+      "SHAP 交互值",
+      "自动交互发现",
+      "肉眼猜测即可"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "结合可视化与解释方法更可靠。",
+    "professor_commentary": "猜不如画。",
+    "topic": "interpretability",
+    "difficulty": "hard"
+  },
+  {
+    "id": "xgb-090",
+    "type": "multi",
+    "stem": "当数据尺寸扩大 10 倍，优先考虑：",
+    "options": [
+      "hist/gpu_hist",
+      "增大 max_bin",
+      "外部内存/分布式",
+      "exact"
+    ],
+    "answer": [
+      0,
+      2
+    ],
+    "explain": "选择近似/并行方法与外部内存更现实。",
+    "professor_commentary": "刀再快也怕大树。",
+    "topic": "systems",
+    "difficulty": "hard"
+  },
+  {
+    "id": "xgb-091",
+    "type": "multi",
+    "stem": "目标分布右偏/长尾时：",
+    "options": [
+      "考虑对数变换或 gamma/poisson 目标",
+      "鲁棒指标（MAE）",
+      "分箱后回归",
+      "仍用普通 MSE 不会有问题"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "分布匹配更重要。",
+    "professor_commentary": "药到病除，先辨体质。",
+    "topic": "objective",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-092",
+    "type": "multi",
+    "stem": "生产中的漂移监控：",
+    "options": [
+      "特征分布漂移",
+      "目标漂移",
+      "数据缺失率",
+      "随机种子"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "输入与标签的漂移都要盯。",
+    "professor_commentary": "别让河道悄悄改了。",
+    "topic": "monitoring",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-093",
+    "type": "multi",
+    "stem": "AUC 很高但业务差的原因可能是：",
+    "options": [
+      "阈值选择不当",
+      "类别极度不平衡需看 PR-AUC",
+      "校准差",
+      "数据泄漏导致虚高"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "指标与决策需要闭环。",
+    "professor_commentary": "会游泳不等于能救人。",
+    "topic": "metrics",
+    "difficulty": "hard"
+  },
+  {
+    "id": "xgb-094",
+    "type": "multi",
+    "stem": "处理极少数正例：",
+    "options": [
+      "K 折分层采样",
+      "scale_pos_weight",
+      "代价敏感学习",
+      "把正例复制 100 倍即可"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "采样/权重/阈值需要共同设计。",
+    "professor_commentary": "稀缺不代表可以糊弄。",
+    "topic": "imbalanced",
+    "difficulty": "hard"
+  },
+  {
+    "id": "xgb-095",
+    "type": "multi",
+    "stem": "当特征数远大于样本数：",
+    "options": [
+      "强正则（L1/L2）",
+      "列采样",
+      "浅树",
+      "更深更复杂"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "降维与约束有助于泛化。",
+    "professor_commentary": "刀要薄，口要小。",
+    "topic": "regularization",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-096",
+    "type": "multi",
+    "stem": "训练加速与资源利用：",
+    "options": [
+      "并行线程/num_workers",
+      "合理 batch 块大小",
+      "评估频率不要太高",
+      "确保 IO 不瓶颈"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "系统问题往往不在算法。",
+    "professor_commentary": "别在红灯口拉涡轮。",
+    "topic": "systems",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-097",
+    "type": "multi",
+    "stem": "选择阈值（threshold）的依据：",
+    "options": [
+      "ROC 曲线与 Youden 指数",
+      "业务成本矩阵",
+      "PR 曲线",
+      "AUC 值本身决定阈值"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "阈值应由业务权衡决定。",
+    "professor_commentary": "尺子得是业务的。",
+    "topic": "decision",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-098",
+    "type": "multi",
+    "stem": "与线性模型比较，树模型：",
+    "options": [
+      "无需特征缩放",
+      "能自动捕获非线性与交互",
+      "对外推不友好",
+      "一定更快"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "外推能力常差一些，要小心部署边界。",
+    "professor_commentary": "别开到地图外面去。",
+    "topic": "comparison",
+    "difficulty": "intro"
+  },
+  {
+    "id": "xgb-099",
+    "type": "multi",
+    "stem": "特征编码的一致性包括：",
+    "options": [
+      "训练与推理用同一编码器",
+      "保存类别-索引映射",
+      "处理未知类别策略",
+      "随机重新编码每次更好"
+    ],
+    "answer": [
+      0,
+      1,
+      2
+    ],
+    "explain": "一致性是线上正确率的底线。",
+    "professor_commentary": "别临场改规则。",
+    "topic": "deployment",
+    "difficulty": "med"
+  },
+  {
+    "id": "xgb-100",
+    "type": "multi",
+    "stem": "一次完整的 XGBoost 项目流程：",
+    "options": [
+      "问题定义与数据审计",
+      "特征工程与编码",
+      "选择目标/指标/验证",
+      "调参与训练/早停/解释/部署"
+    ],
+    "answer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explain": "流程闭环才是专业度。",
+    "professor_commentary": "方法是护城河。",
+    "topic": "practice",
+    "difficulty": "intro"
+  }
+]
