@@ -60,6 +60,19 @@ python mlip.py --epochs 30
 
 ---
 
+
+## 打包下载（ZIP）
+
+在项目根目录执行：
+
+```bash
+bash scripts/package.sh mlip_project.zip
+```
+
+执行后会在当前目录生成 `mlip_project.zip`，可直接下载/分发。
+
+---
+
 ## 你可以如何扩展
 
 - 将描述符替换为 SOAP/ACE/图网络消息传递
