@@ -1,0 +1,34 @@
+name: mlipx_standard
+data:
+  path: data/demo.extxyz
+  format: extxyz
+  energy_key: energy
+  force_key: forces
+  cutoff: 5.0
+  max_neighbors: 64
+  train_ratio: 0.8
+  val_ratio: 0.1
+  test_ratio: 0.1
+  batch_size: 16
+  num_workers: 2
+  normalize_energy_per_atom: true
+model:
+  hidden_dim: 128
+  n_interactions: 4
+  n_rbf: 32
+  cutoff: 5.0
+train:
+  seed: 42
+  device: auto
+  epochs: 50
+  lr: 0.0002
+  weight_decay: 1.0e-6
+  energy_weight: 1.0
+  force_weight: 50.0
+  grad_clip: 5.0
+  amp: true
+  scheduler: cosine
+  scheduler_tmax: 50
+  early_stopping_patience: 12
+  output_dir: artifacts/standard
+  resume_checkpoint: null
